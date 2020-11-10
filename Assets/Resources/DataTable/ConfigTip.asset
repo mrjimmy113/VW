@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e7d77e169d64744c846b55901020fa5, type: 3}
+  m_Name: ConfigTip
+  m_EditorClassIdentifier: 
+  records:
+  - id: 1
+    tip: Enemies move from up to down
+  - id: 2
+    tip: Fire rate increase the number of bullet per firing
+  - id: 3
+    tip: Weapon can be unlocked after clearing a specific mission

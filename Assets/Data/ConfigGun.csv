@@ -1,0 +1,5 @@
+id,prefab,activeSprite,inActiveSprite
+1,Gun/Gun01,subWeapon1,subWeapon_gray1
+2,Gun/Gun02,subWeapon2,subWeapon_gray2
+3,Gun/Gun03,subWeapon3,subWeapon_gray3
+4,Gun/Gun04,subWeapon4,subWeapon_gray4

@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6e51c4c0f13c4148a3f6807d7d33333, type: 3}
+  m_Name: ConfigGun
+  m_EditorClassIdentifier: 
+  records:
+  - id: 1
+    prefab: Gun/Gun01
+    activeSprite: subWeapon1
+    inActiveSprite: subWeapon_gray1
+  - id: 2
+    prefab: Gun/Gun02
+    activeSprite: subWeapon2
+    inActiveSprite: subWeapon_gray2
+  - id: 3
+    prefab: Gun/Gun03
+    activeSprite: subWeapon3
+    inActiveSprite: subWeapon_gray3
+  - id: 4
+    prefab: Gun/Gun04
+    activeSprite: subWeapon4
+    inActiveSprite: subWeapon_gray4

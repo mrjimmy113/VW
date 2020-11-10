@@ -1,0 +1,2 @@
+id,prefab,sprite,value,isBuff,fieldName,effectTime
+1,BuffDebuff/BuffDebuff_ModifyStat,icon_c_fireRate,3,1,FireRate,10
