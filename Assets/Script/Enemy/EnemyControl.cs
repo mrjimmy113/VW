@@ -45,7 +45,7 @@ public class EnemyControl : MonoBehaviour
 
     public float speed = 1;
     [SerializeField]
-    private int hp = 1;
+    public int hp = 1;
     [SerializeField]
     private bool canDuplicate = false;
     [SerializeField]

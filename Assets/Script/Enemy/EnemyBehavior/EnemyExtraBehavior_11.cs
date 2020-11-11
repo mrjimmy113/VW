@@ -7,6 +7,8 @@ public class EnemyExtraBehavior_11 : EnemyExtraBehavior
 {
     [SerializeField]
     private float coolDown = 3f;
+    [SerializeField]
+    private float hpFactor = 10f;
 
     [SerializeField]
     private Transform prefab;
@@ -22,7 +24,7 @@ public class EnemyExtraBehavior_11 : EnemyExtraBehavior
         
         WaitForSeconds cd = new WaitForSeconds(coolDown);
         EnemyInfor infor = new EnemyInfor();
-        infor.hp = Mathf.RoundToInt(control.inforEnemy.hp / 10);
+        infor.hp = Mathf.RoundToInt(control.inforEnemy.hp / hpFactor);
         infor.duplicate = null;
         infor.isDuplicate = false;
         infor.spawnBuffDebuff = false;

@@ -7,7 +7,10 @@ public class EnemyExtraBehavior_15 : EnemyExtraBehavior
 {
     [SerializeField]
     private float healSpeed = 0.1f;
+    [SerializeField]
+    private float healTime = 10f;
 
+    private int healAmount;
 
 
     private Coroutine startHealing;
@@ -16,6 +19,7 @@ public class EnemyExtraBehavior_15 : EnemyExtraBehavior
     public override void Setup()
     {
         control.OnEnemyDamaged += OnEnemyDamaged;
+        healAmount = Mathf.RoundToInt(control.inforEnemy.hp * healSpeed / healTime);
     }
 
     private void OnEnemyDamaged(OnEnemyDamagedParam obj)
@@ -34,6 +38,12 @@ public class EnemyExtraBehavior_15 : EnemyExtraBehavior
         yield return new WaitForSeconds(1f);
         while(true)
         {
+            control.Heal(healAmount);
+            if(control.hp >= control.inforEnemy.hp)
+            {
+                StopCoroutine(StartHealing());
+                break;
+            }
             yield return wait;
             
         }

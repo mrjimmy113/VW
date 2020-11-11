@@ -466,8 +466,9 @@ GameObject:
   - component: {fileID: 5373867145924032300}
   - component: {fileID: 5373867145924032298}
   - component: {fileID: 4135438182700562373}
+  - component: {fileID: 4196640757361034493}
   m_Layer: 8
-  m_Name: Enemy00
+  m_Name: Enemy17
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -516,6 +517,7 @@ MonoBehaviour:
   spawnBuffDebuff: 0
   moveSpeedPercentWhenHitted: 0.5
   currentSpeed: 0
+  isInvincible: 0
 --- !u!58 &4135438182700562373
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -532,6 +534,21 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.3
+--- !u!114 &4196640757361034493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5373867145924032299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bf7a1196a6769c459a60e4106cd2d21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 5373867145924032300, guid: a06d342550a8078488a69e0dc2cde0e0, type: 3}
+  numberOfSpawnOnDead: 3
+  hpFactor: 3
 --- !u!1 &6248805516632478311
 GameObject:
   m_ObjectHideFlags: 0
