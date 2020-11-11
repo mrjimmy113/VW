@@ -26,6 +26,7 @@ public class PlayerControl : MonoBehaviour
 
     private WeaponControl weaponControl;
     private List<WeaponBehavior> activeGunList;
+    private Vector3 newDestination;
 
 
     [Header("Stat")]
@@ -39,6 +40,10 @@ public class PlayerControl : MonoBehaviour
     private int fireRate = 1;
     [SerializeField]
     private float spaceBetweenProjectile = 0.1f;
+    [SerializeField]
+    private float speed = 1f;
+    private float currentSpeed;
+    private Coroutine slowDownCoroutine;
 
     public int FireRate { get { return fireRate; } set { fireRate = value; } }
 
@@ -69,6 +74,7 @@ public class PlayerControl : MonoBehaviour
         weaponControl = GetComponentInChildren<WeaponControl>();
         
         timeAttack = rof;
+        currentSpeed = speed;
     }
 
     private void Start()
@@ -141,7 +147,10 @@ public class PlayerControl : MonoBehaviour
         }
 
         timeAttack += Time.deltaTime;
-
+        if(isFire)
+        {
+            trans.position = Vector3.MoveTowards(trans.position, newDestination, Time.deltaTime * currentSpeed);
+        }
      
     }
 
@@ -249,7 +258,7 @@ public class PlayerControl : MonoBehaviour
 
         newPosition = Boudary.instance.ClampBoudary(newPosition);
 
-        trans.position = newPosition;
+        newDestination = newPosition;
 
         startPoint = p;
     }
@@ -314,8 +323,26 @@ public class PlayerControl : MonoBehaviour
         AddBuffDebuffEvent?.Invoke(cf.Sprite, cf.Id, cf.EffectTime);
     }
 
-    
-    
+    public void Slow(float speed)
+    {
+        
+        if (slowDownCoroutine != null)
+        {
+            StopCoroutine(slowDownCoroutine);
+            slowDownCoroutine = null;
+        }
+        slowDownCoroutine = StartCoroutine(SlowDownSpeed(speed));
+
+    }
+
+    IEnumerator SlowDownSpeed(float modifySpeed)
+    {
+        float oldSpeed = currentSpeed;
+        currentSpeed = modifySpeed;
+        yield return new WaitForSeconds(0.5f);
+        currentSpeed = oldSpeed;
+    }
+
 }
 
 public class BuffDebuffData

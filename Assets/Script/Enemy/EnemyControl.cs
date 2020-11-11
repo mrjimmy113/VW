@@ -22,9 +22,9 @@ public class EnemyControl : MonoBehaviour
     [SerializeField]
     private Transform kind_2;
     [SerializeField]
-    private Transform model;
+    public Transform model;
     [SerializeField]
-    private Transform deadAnim;
+    public Transform deadAnim;
 
     private Tween rotateTwin1;
     private Tween rotateTwin2;
@@ -49,6 +49,7 @@ public class EnemyControl : MonoBehaviour
     public float currentSpeed;
     private Coroutine slowDownCoroutine;
     private bool isDead = false;
+    private bool isChild = false;
 
     
 
@@ -106,16 +107,27 @@ public class EnemyControl : MonoBehaviour
     }
 
 
+    public void SetChild()
+    {
+        isChild = true;
+        StopCoroutine(CheckCollisionBoudary());
+    }
 
+    public void RemoveChild()
+    {
+        trans.SetParent(null);
+        isChild = false;
+        StartCoroutine(CheckCollisionBoudary());
+    }
 
     private void Update()
     {
-        if(!isDead) trans.position += direction * Time.deltaTime * currentSpeed;
+        if(!isDead && !isChild) trans.position += direction * Time.deltaTime * currentSpeed;
     }
 
     private void FixedUpdate()
     {
-        if(!isDead) col.enabled = Boudary.instance.IsInScreen(trans.position);
+        if(!isDead && !isChild) col.enabled = Boudary.instance.IsInScreen(trans.position);
     }
 
     IEnumerator CheckCollisionPlayer()
@@ -227,7 +239,11 @@ public class EnemyControl : MonoBehaviour
     {
         if (isDead) return;
              
-        if (slowDownCoroutine != null) StopCoroutine(slowDownCoroutine);
+        if (slowDownCoroutine != null)
+        {
+            StopCoroutine(slowDownCoroutine);
+            slowDownCoroutine = null;
+        }
         slowDownCoroutine = StartCoroutine(SlowDownSpeed());
         hp -= dmg;
         txtHp.text = hp.ToString();
@@ -293,11 +309,12 @@ public class EnemyControl : MonoBehaviour
 
             }
         }
+
         OnEnemyDead?.Invoke(coinAmount);
-        Destroy(gameObject, 1f);
         model.gameObject.SetActive(false);
         deadAnim.gameObject.SetActive(true);
-        
+        Destroy(gameObject, 1f);
+
 
     }
 

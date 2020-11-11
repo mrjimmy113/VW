@@ -14,6 +14,8 @@ public class InputManager : Singleton<InputManager>
 
     private EventSystem eventSystem;
 
+    private bool isTouch = false;
+
     private void Start()
     {
         eventSystem = FindObjectOfType<EventSystem>();

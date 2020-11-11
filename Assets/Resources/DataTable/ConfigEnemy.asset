@@ -69,3 +69,11 @@ MonoBehaviour:
     enemyDuplicateIds: 0
     coinAmount: 0
     spawnBuffDebuff: 0
+  - id: 8
+    hp: 10
+    sizeScale: 1.5
+    prefab: Enemy/Enemy04
+    isDuplicate: 0
+    enemyDuplicateIds: 0
+    coinAmount: 0
+    spawnBuffDebuff: 0

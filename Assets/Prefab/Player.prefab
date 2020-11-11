@@ -242,6 +242,7 @@ MonoBehaviour:
   damage: 1
   fireRate: 3
   spaceBetweenProjectile: 0.2
+  speed: 100
 --- !u!61 &2905527896036860857
 BoxCollider2D:
   m_ObjectHideFlags: 0
