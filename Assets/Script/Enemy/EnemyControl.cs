@@ -5,6 +5,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+public class OnEnemyDeadParam
+{
+    public int coinAmount;
+    public bool isCountDead;
+}
+
+public class OnEnemyDamagedParam
+{
+
+}
+
 public class EnemyControl : MonoBehaviour
 {
     
@@ -30,6 +41,8 @@ public class EnemyControl : MonoBehaviour
     private Tween rotateTwin2;
 
     [Header("Enemy Stat")]
+    public EnemyInfor inforEnemy;
+
     public float speed = 1;
     [SerializeField]
     private int hp = 1;
@@ -50,10 +63,13 @@ public class EnemyControl : MonoBehaviour
     private Coroutine slowDownCoroutine;
     private bool isDead = false;
     private bool isChild = false;
+    public bool isInvincible = false;
 
     
 
-    public event Action<int> OnEnemyDead;
+    public event Action<OnEnemyDeadParam> OnEnemyDead;
+    public event Action<OnEnemyDamagedParam> OnEnemyDamaged;
+    
 
     private Coroutine corCanCollideWithDown;
     
@@ -63,15 +79,17 @@ public class EnemyControl : MonoBehaviour
     private float minStartAngle = 200;
     private float maxStartAngle = 320;
 
+    private bool isCountOnDead = false;
 
-    public void Setup(EnemyInfor enemyInfor, bool isDuplication)
+    public void Setup(EnemyInfor enemyInfor, bool isDuplication, bool isCountOnDead)
     {
-        
+        this.inforEnemy = enemyInfor;
+        this.isCountOnDead = isCountOnDead;
         hp = enemyInfor.hp;
         canDuplicate = enemyInfor.isDuplicate;
         duplication = enemyInfor.duplicate;
         spawnBuffDebuff = enemyInfor.spawnBuffDebuff;
-        trans.localScale = trans.localScale * enemyInfor.sizeScale;
+        trans.localScale = Vector3.one * enemyInfor.sizeScale;
         txtHp.text = hp.ToString();
         coinAmount = enemyInfor.coinAmount;
         if(isDuplication) ChangeDir(20, 160);
@@ -237,6 +255,8 @@ public class EnemyControl : MonoBehaviour
 
     public void OnDamage(int dmg)
     {
+        if (isInvincible) return;
+
         if (isDead) return;
              
         if (slowDownCoroutine != null)
@@ -247,7 +267,8 @@ public class EnemyControl : MonoBehaviour
         slowDownCoroutine = StartCoroutine(SlowDownSpeed());
         hp -= dmg;
         txtHp.text = hp.ToString();
-        if(hp <=0) Dead();
+        if (hp <= 0) Dead();
+        else OnEnemyDamaged?.Invoke(null);
     }
 
     public void Heal(int heal)
@@ -268,6 +289,22 @@ public class EnemyControl : MonoBehaviour
         direction = (trans.position - pos).normalized;
         moveDegree = Vector2.Angle(Vector2.right, direction);
 
+    }
+    
+    public void OnFollow(Vector3 pos)
+    {
+        direction = (pos - trans.position).normalized;
+        moveDegree = Vector2.Angle(Vector2.right, direction);
+    }
+
+    public void SetDirection(float angle)
+    {
+        moveDegree = angle;
+        float radiant = Mathf.Deg2Rad * moveDegree;
+        Vector2 d = new Vector2(Mathf.Cos(radiant), Mathf.Sin(radiant));
+
+        dir.localPosition = d * 0.3f;
+        direction = dir.localPosition.normalized;
     }
 
     IEnumerator SlowDownSpeed()
@@ -302,15 +339,16 @@ public class EnemyControl : MonoBehaviour
                 EnemyInfor infor = duplication[i];
                 GameObject obj = Instantiate(infor.prefab, null);
                 EnemyControl enemy = obj.GetComponent<EnemyControl>();
-                enemy.Setup(infor, true);
+                enemy.Setup(infor, true, true);
                 enemy.trans.position = trans.position;
-                enemy.OnEnemyDead += OnEnemyDead;
 
 
             }
         }
-
-        OnEnemyDead?.Invoke(coinAmount);
+        OnEnemyDeadParam param = new OnEnemyDeadParam();
+        param.coinAmount = coinAmount;
+        param.isCountDead = isCountOnDead;
+        OnEnemyDead?.Invoke(param);
         model.gameObject.SetActive(false);
         deadAnim.gameObject.SetActive(true);
         Destroy(gameObject, 1f);

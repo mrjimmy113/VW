@@ -38,7 +38,8 @@ public class EnemyInfor
     public EnemyInfor[] duplicate;
     public int coinAmount;
     public bool spawnBuffDebuff;
-    
+
+    public EnemyInfor() { }
 
     public EnemyInfor(ConfigEnemyRecord config)
     {
@@ -167,7 +168,7 @@ public class MissionManager : Singleton<MissionManager>
                     EnemyInfor infor = w.enemyInfor[i];
                     GameObject obj = Instantiate(infor.prefab, null);
                     EnemyControl enemy = obj.GetComponent<EnemyControl>();
-                    enemy.Setup(infor,false);
+                    enemy.Setup(infor,false,true);
                     enemy.OnEnemyDead += OnEnemyDead;
                     enemy.transform.position = enemy.GetTopPos();
                     
@@ -194,13 +195,16 @@ public class MissionManager : Singleton<MissionManager>
 
     }
 
-    private void OnEnemyDead(int coinAmount)
+    private void OnEnemyDead(OnEnemyDeadParam param)
     {
-        goldEarned += goldValue * coinAmount;
-        OnGoldEarnedIncrease?.Invoke(goldEarned);
-        totalMissionEnemyDead++;
-        totalEnemyDead++;
-        OnEnemyDeadEvent?.Invoke(totalMissionEnemyDead, totalMissionEnemy);
+        if(param.isCountDead)
+        {
+            goldEarned += goldValue * param.coinAmount;
+            OnGoldEarnedIncrease?.Invoke(goldEarned);
+            totalMissionEnemyDead++;
+            totalEnemyDead++;
+            OnEnemyDeadEvent?.Invoke(totalMissionEnemyDead, totalMissionEnemy);
+        }
     }
 
     IEnumerator CheckEndGame()

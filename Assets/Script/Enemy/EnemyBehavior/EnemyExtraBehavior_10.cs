@@ -2,17 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyExtraBehavior_10 : MonoBehaviour
+public class EnemyExtraBehavior_10 : EnemyExtraBehavior
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    private float maxExtraSize = 5;
+    [SerializeField]
+    private float minExtraSize = 0;
+    [SerializeField]
+    private float timeToChange = 2f;
+
+    public override void Setup()
     {
-        
+        StartCoroutine(ChangeSize());
     }
 
-    // Update is called once per frame
-    void Update()
+    IEnumerator ChangeSize()
     {
-        
+        WaitForSeconds wait = new WaitForSeconds(timeToChange);
+        while (true)
+        {
+            yield return wait;
+            control.currentSpeed = control.speed + UnityEngine.Random.Range(minExtraSize, maxExtraSize);
+        }
     }
 }

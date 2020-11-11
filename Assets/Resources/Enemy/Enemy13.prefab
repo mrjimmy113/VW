@@ -466,10 +466,10 @@ GameObject:
   - component: {fileID: 5373867145924032300}
   - component: {fileID: 5373867145924032298}
   - component: {fileID: 4135438182700562373}
-  - component: {fileID: 8869248298770258961}
+  - component: {fileID: 5967403369679533343}
   m_Layer: 8
-  m_Name: Enemy09
-  m_TagString: Pusher
+  m_Name: Enemy13
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -517,6 +517,7 @@ MonoBehaviour:
   spawnBuffDebuff: 0
   moveSpeedPercentWhenHitted: 0.5
   currentSpeed: 0
+  isInvincible: 0
 --- !u!58 &4135438182700562373
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -533,7 +534,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.3
---- !u!114 &8869248298770258961
+--- !u!114 &5967403369679533343
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -542,11 +543,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 5373867145924032299}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a185d986f15030748819e2a3b3207c2b, type: 3}
+  m_Script: {fileID: 11500000, guid: a66795d0148c95c4382ff4b93c8b3eec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  checkTime: 0.1
-  checkRadius: 0.5
+  invincibleTime: 2
+  coodDown: 10
 --- !u!1 &6248805516632478311
 GameObject:
   m_ObjectHideFlags: 0
@@ -751,7 +752,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 7b537475506799a4f83aca52517cdb46, type: 3}
-  m_Color: {r: 1, g: 0.2349821, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -832,7 +833,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: a35f3876bccda4349ab5f71619df8322, type: 3}
-  m_Color: {r: 0, g: 0.32439733, b: 1, a: 1}
+  m_Color: {r: 0, g: 0.288177, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -913,7 +914,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: a35f3876bccda4349ab5f71619df8322, type: 3}
-  m_Color: {r: 1, g: 0.0897288, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

@@ -15,16 +15,15 @@ public class EnemyExtraBehavior_08 : EnemyExtraBehavior
     public override void Setup()
     {
         StartCoroutine(StartCheck());
-        control.OnEnemyDead += OnDead;
     }
 
-    private void OnDead(int obj)
+    public override void OnDead(OnEnemyDeadParam param)
     {
-        foreach(var c in child)
+        foreach (var c in child)
         {
             c.RemoveChild();
         }
-        StopAllCoroutines();
+        base.OnDead(param);
     }
 
     IEnumerator StartCheck()

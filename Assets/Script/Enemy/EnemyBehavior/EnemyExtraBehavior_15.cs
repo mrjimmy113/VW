@@ -1,18 +1,41 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyExtraBehavior_15 : MonoBehaviour
+public class EnemyExtraBehavior_15 : EnemyExtraBehavior
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    private float healSpeed = 0.1f;
+
+
+
+    private Coroutine startHealing;
+
+
+    public override void Setup()
     {
-        
+        control.OnEnemyDamaged += OnEnemyDamaged;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnEnemyDamaged(OnEnemyDamagedParam obj)
     {
-        
+        if (startHealing != null)
+        {
+            StopCoroutine(startHealing);
+            startHealing = null;
+        }
+        startHealing = StartCoroutine(StartHealing());
+    }
+
+    IEnumerator StartHealing()
+    {
+        WaitForSeconds wait = new WaitForSeconds(healSpeed);
+        yield return new WaitForSeconds(1f);
+        while(true)
+        {
+            yield return wait;
+            
+        }
     }
 }

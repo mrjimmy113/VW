@@ -9,6 +9,12 @@ public class EnemyExtraBehavior : MonoBehaviour
     private void OnEnable()
     {
         control = GetComponent<EnemyControl>();
+        control.OnEnemyDead += OnDead;
+    }
+
+    public virtual void OnDead(OnEnemyDeadParam param)
+    {
+        StopAllCoroutines();
     }
 
     public virtual void Setup()

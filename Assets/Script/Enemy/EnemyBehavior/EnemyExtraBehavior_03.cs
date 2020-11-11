@@ -15,12 +15,6 @@ public class EnemyExtraBehavior_03 : EnemyExtraBehavior
     public override void Setup()
     {
         StartCoroutine(CheckPush());
-        control.OnEnemyDead += OnDead;
-    }
-
-    private void OnDead(int obj)
-    {
-        StopAllCoroutines();
     }
 
     IEnumerator CheckPush()

@@ -61,6 +61,16 @@ public static class MyUltis
         return strMinute + ":" + strSecond;
     }
 
+    public static float NextAngle(this float angle, float increaseAmount)
+    {
+        float result = angle + increaseAmount;
+        if(result > 360)
+        {
+            result -= 360;
+        }
+
+        return result;
+    }
     
 
 

@@ -38,14 +38,13 @@ public class EnemyExtraBehavior_02 : EnemyExtraBehavior
     {
         StartCoroutine(CheckHealing());
         StartCoroutine(HealingVFX());
-        control.OnEnemyDead += OnDead;
     }
 
-    private void OnDead(int obj)
+    public override void OnDead(OnEnemyDeadParam param)
     {
         healTargets.Clear();
         lineRenderer.positionCount = 0;
-        StopAllCoroutines();
+        base.OnDead(param);   
     }
 
     IEnumerator CheckHealing()

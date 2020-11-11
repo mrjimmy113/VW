@@ -21,12 +21,7 @@ public class EnemyExtraBehavior_06 : EnemyExtraBehavior
     public override void Setup()
     {
         StartCoroutine(StartCheck());
-        control.OnEnemyDead += OnDead;
-    }
-
-    private void OnDead(int obj)
-    {
-        StopAllCoroutines();
+        
     }
 
     IEnumerator StartCheck()

@@ -27,13 +27,12 @@ public class EnemyExtraBehavior_04 : EnemyExtraBehavior
     {
         StartCoroutine(CheckSlow());
         StartCoroutine(SlowVFX());
-        control.OnEnemyDead += OnDead;
     }
 
-    private void OnDead(int obj)
+    public override void OnDead(OnEnemyDeadParam param)
     {
         lineRenderer.positionCount = 0;
-        StopAllCoroutines();
+        base.OnDead(param);
     }
 
     IEnumerator CheckSlow()

@@ -9,13 +9,14 @@ public class EnemyExtraBehavior_07 : EnemyExtraBehavior
 
     public override void Setup()
     {
-        control.OnEnemyDead += OnDead;
+        
     }
 
-    private void OnDead(int obj)
+    public override void OnDead(OnEnemyDeadParam param)
     {
         control.enabled = false;
         Explode();
+        base.OnDead(param);
     }
 
     private void Explode()

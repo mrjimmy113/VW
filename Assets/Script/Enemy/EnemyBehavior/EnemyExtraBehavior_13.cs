@@ -2,17 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyExtraBehavior_13 : MonoBehaviour
+public class EnemyExtraBehavior_13 : EnemyExtraBehavior
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    private float invincibleTime = 2f;
+
+    [SerializeField]
+    private float coodDown = 10f;
+
+    public override void Setup()
     {
-        
+        StartCoroutine(StartCheck());
     }
 
-    // Update is called once per frame
-    void Update()
+    IEnumerator StartCheck()
     {
-        
+        WaitForSeconds buffTime = new WaitForSeconds(invincibleTime);
+        WaitForSeconds cd = new WaitForSeconds(coodDown);
+        yield return new WaitForSeconds(3f);
+        while(true)
+        {
+            control.isInvincible = true;
+            yield return buffTime;
+            control.isInvincible = false;
+            yield return coodDown;
+        }
     }
 }
