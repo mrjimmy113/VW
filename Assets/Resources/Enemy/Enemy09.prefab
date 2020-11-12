@@ -504,6 +504,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dir: {fileID: 5373867144071999954}
+  direction: {x: 0, y: 0, z: 0}
   txtHp: {fileID: 5373867145479905661}
   col: {fileID: 0}
   kind_1: {fileID: 482062320690828794}
@@ -516,7 +517,10 @@ MonoBehaviour:
   coinAmount: 0
   spawnBuffDebuff: 0
   moveSpeedPercentWhenHitted: 0.5
+  moveDegree: 0
   currentSpeed: 0
+  isChild: 0
+  isInvincible: 0
 --- !u!58 &4135438182700562373
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -546,7 +550,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   checkTime: 0.1
-  checkRadius: 0.5
+  checkRadius: 2
 --- !u!1 &6248805516632478311
 GameObject:
   m_ObjectHideFlags: 0

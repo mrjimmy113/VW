@@ -9,7 +9,9 @@ public class EnemyExtraBehavior_10 : EnemyExtraBehavior
     [SerializeField]
     private float minExtraSize = 0;
     [SerializeField]
-    private float timeToChange = 2f;
+    private float timeBetweenChange = 2f;
+    [SerializeField]
+    private float timeChange = 1f;
 
     public override void Setup()
     {
@@ -18,11 +20,26 @@ public class EnemyExtraBehavior_10 : EnemyExtraBehavior
 
     IEnumerator ChangeSize()
     {
-        WaitForSeconds wait = new WaitForSeconds(timeToChange);
+        WaitForSeconds wait = new WaitForSeconds(timeBetweenChange + timeChange);
         while (true)
         {
             yield return wait;
-            control.currentSpeed = control.speed + UnityEngine.Random.Range(minExtraSize, maxExtraSize);
+            float size = control.inforEnemy.sizeScale + UnityEngine.Random.Range(minExtraSize, maxExtraSize);
+            StartCoroutine(StartChangeSize(size));
+        }
+    }
+
+    IEnumerator StartChangeSize(float toSize) 
+    {
+        
+        var currentScale = control.transform.localScale;
+        Vector2 newSize = new Vector2(toSize, toSize);
+        var t = 0f;
+        while(t < 1)
+        {
+            t += Time.deltaTime / timeChange;
+            control.transform.localScale = Vector2.Lerp(currentScale, newSize, t);
+            yield return null;
         }
     }
 }

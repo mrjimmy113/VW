@@ -47,6 +47,10 @@ public class PlayerControl : MonoBehaviour
 
     public int FireRate { get { return fireRate; } set { fireRate = value; } }
 
+    public int Damage { get => damage; set => damage = value; }
+
+    public float Speed { get => speed; set => speed = value; }
+
 
     private bool isFire = false;
 
@@ -54,10 +58,7 @@ public class PlayerControl : MonoBehaviour
 
     public event Action OnPlayerDead;
 
-    private List<BuffDebuffData> buffDebuffDatas = new List<BuffDebuffData>();
-    public event Action<string,int,float> AddBuffDebuffEvent;
-    public event Action<int, float> BuffDebuffProgressEvent;
-    public event Action<int> RemoveBuffDebuffEvent;
+    
 
 
     
@@ -134,7 +135,7 @@ public class PlayerControl : MonoBehaviour
         fireRate = cfFr.Value;
         weaponControl.enabled = true;
 
-        StartCoroutine(CheckBuffDebuff());
+        
     }
    
 
@@ -154,34 +155,7 @@ public class PlayerControl : MonoBehaviour
      
     }
 
-   IEnumerator CheckBuffDebuff()
-    {
-        WaitForSeconds waitForSeconds = new WaitForSeconds(0.2f);
-        while(true)
-        {
-            List<BuffDebuffData> removeList = new List<BuffDebuffData>();
-            foreach (var d in buffDebuffDatas)
-            {
-                d.remainTime -= 0.2f;
-                BuffDebuffProgressEvent?.Invoke(d.cf.Id, d.remainTime);
-                if (d.remainTime <= 0)
-                {
-                    removeList.Add(d);
-                }
-            }
-
-            foreach (var d in removeList)
-            {
-                buffDebuffDatas.Remove(d);
-                Type type = this.GetType();
-                PropertyInfo prop = type.GetProperty(d.cf.FieldName);
-                prop.SetValue(this, d.oldValue, null);
-                RemoveBuffDebuffEvent?.Invoke(d.cf.Id);
-            }
-
-            yield return waitForSeconds;
-        }
-    }
+   
 
 
     public void Dead()
@@ -300,28 +274,7 @@ public class PlayerControl : MonoBehaviour
         trans.DOMoveY(-2, 1f);
     }
 
-    public void ApplyBuffDebuff(ConfigBuffDebuffRecord cf)
-    {
-        foreach(var d in buffDebuffDatas)
-        {
-            if(d.cf.Id == cf.Id)
-            {
-                d.remainTime = cf.EffectTime;
-                AddBuffDebuffEvent?.Invoke(cf.Sprite, cf.Id, cf.EffectTime);
-                return;
-            }
-        }
-
-        Type type = this.GetType();
-        PropertyInfo prop = type.GetProperty(cf.FieldName);
-        int oldValue = (int)prop.GetValue(this);
-
-        if (cf.IsBuff) prop.SetValue(this, ((int)prop.GetValue(this)) * cf.Value, null);
-        else prop.SetValue(this, ((int)prop.GetValue(this)) / cf.Value, null);
-
-        buffDebuffDatas.Add(new BuffDebuffData(cf, oldValue));
-        AddBuffDebuffEvent?.Invoke(cf.Sprite, cf.Id, cf.EffectTime);
-    }
+    
 
     public void Slow(float speed)
     {
@@ -345,16 +298,4 @@ public class PlayerControl : MonoBehaviour
 
 }
 
-public class BuffDebuffData
-{
-    public ConfigBuffDebuffRecord cf;
-    public int oldValue;
-    public float remainTime;
 
-    public BuffDebuffData (ConfigBuffDebuffRecord cf, int oldValue)
-    {
-        this.cf = cf;
-        this.oldValue = oldValue;
-        remainTime = cf.EffectTime;
-    }
-}

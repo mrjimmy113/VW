@@ -20,7 +20,7 @@ public class IngameView : BaseView
 
 
     private List<BuffDebuffItem> buffDebuffItems = new List<BuffDebuffItem>();
-    private PlayerControl playerControl;
+    private BuffDebuffControl buffDebuffControl;
 
     private bool isSetupOneTime = true;
 
@@ -39,10 +39,10 @@ public class IngameView : BaseView
         resultPanel.blocksRaycasts = false;
 
 
-        playerControl = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControl>();
-        playerControl.AddBuffDebuffEvent += AddBuffDebuff;
-        playerControl.BuffDebuffProgressEvent += BuffDebuffProgress;
-        playerControl.RemoveBuffDebuffEvent += RemoveBuffDebuff;
+        buffDebuffControl = GameObject.FindGameObjectWithTag("Player").GetComponent<BuffDebuffControl>();
+        buffDebuffControl.AddBuffDebuffEvent += AddBuffDebuff;
+        buffDebuffControl.BuffDebuffProgressEvent += BuffDebuffProgress;
+        buffDebuffControl.RemoveBuffDebuffEvent += RemoveBuffDebuff;
         MissionManager.instance.OnEnemyDeadEvent += UpdateProgress;
         MissionManager.instance.OnGoldEarnedIncrease += UpdateGold;
         MissionManager.instance.OnGameEnd += OnGameEnd;

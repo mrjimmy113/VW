@@ -466,7 +466,7 @@ GameObject:
   - component: {fileID: 5373867145924032300}
   - component: {fileID: 5373867145924032298}
   - component: {fileID: 4135438182700562373}
-  - component: {fileID: -4161776594843356458}
+  - component: {fileID: 5887489448587456555}
   m_Layer: 8
   m_Name: Enemy11
   m_TagString: Pusher
@@ -504,6 +504,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dir: {fileID: 5373867144071999954}
+  direction: {x: 0, y: 0, z: 0}
   txtHp: {fileID: 5373867145479905661}
   col: {fileID: 0}
   kind_1: {fileID: 482062320690828794}
@@ -516,7 +517,9 @@ MonoBehaviour:
   coinAmount: 0
   spawnBuffDebuff: 0
   moveSpeedPercentWhenHitted: 0.5
+  moveDegree: 0
   currentSpeed: 0
+  isChild: 0
   isInvincible: 0
 --- !u!58 &4135438182700562373
 CircleCollider2D:
@@ -534,7 +537,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.3
---- !u!114 &-4161776594843356458
+--- !u!114 &5887489448587456555
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -547,6 +550,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coolDown: 3
+  hpFactor: 10
   prefab: {fileID: 5373867145924032300, guid: 133818274a25b7b48bfe32075e60e287, type: 3}
 --- !u!1 &6248805516632478311
 GameObject:
@@ -772,7 +776,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4468183280519618927}
   - component: {fileID: 6959865770690074317}
-  - component: {fileID: 7680571752899980514}
   m_Layer: 8
   m_Name: New Sprite
   m_TagString: Untagged
@@ -844,20 +847,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7680571752899980514
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8833264856020256322}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e64bd87fc088fd5449ac2d2b3590fcc3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  coolDown: 3
-  prefab: {fileID: 5373867145924032300}
 --- !u!1 &9064175939554950496
 GameObject:
   m_ObjectHideFlags: 0

@@ -54,7 +54,7 @@ public abstract class BuffDebuff : MonoBehaviour
             Collider2D hit2D = Physics2D.OverlapCircle(trans.position, 0.2f * trans.localScale.x, 1 << 12);
             if (hit2D != null)
             {
-                OnEffect(hit2D.transform);
+                OnEffect();
                 Destroy(gameObject);
                 break;
             }
@@ -78,5 +78,7 @@ public abstract class BuffDebuff : MonoBehaviour
         this.icon.sprite = SpriteLiblary.instance.GetSpriteByName(cf.Sprite);
     }
 
-    public abstract void OnEffect(Transform transform);
+    public abstract void OnEffect();
+
+    public abstract void AfterEffect();
 }

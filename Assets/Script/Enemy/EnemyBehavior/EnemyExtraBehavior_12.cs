@@ -10,6 +10,15 @@ public class EnemyExtraBehavior_12 : EnemyExtraBehavior
     [SerializeField]
     private float checkRadius = 0.5f;
 
+    [SerializeField]
+    private float percentPerLeech = 0.02f;
+
+    [SerializeField]
+    private float timeBetweenLeech = 0.5f;
+
+
+
+
     private string leecherTag = "Leecher";
 
     private LineRenderer lineRenderer;
@@ -18,6 +27,7 @@ public class EnemyExtraBehavior_12 : EnemyExtraBehavior
     public override void Setup()
     {
         lineRenderer = GetComponent<LineRenderer>();
+        StartCoroutine(StartCheck());
     }
 
     IEnumerator StartCheck()
@@ -28,19 +38,24 @@ public class EnemyExtraBehavior_12 : EnemyExtraBehavior
             Collider2D col = Physics2D.OverlapCircle(transform.position, checkRadius
                 , LayerConfig.ENEMY_LAYER
                 );
-            if(col != null && col.tag != leecherTag)
+            if(col != null && !col.CompareTag(leecherTag))
             {
+                
                 lineRenderer.positionCount = 2;
-                StartCoroutine(LeechVFX());
                 control.SetChild();
                 leechTarget = col.transform;
+                transform.SetParent(leechTarget);
+                StartCoroutine(LeechVFX());
+                StartCoroutine(Leeching());
                 col.GetComponent<EnemyControl>().OnEnemyDead += (p) =>
                 {
+                    StopCoroutine(LeechVFX());
+                    StopCoroutine(Leeching());
+                    leechTarget = null;
                     control.RemoveChild();
                     lineRenderer.positionCount = 0;
-                    StopCoroutine(LeechVFX());
-                    leechTarget = null;
                     StartCoroutine(StartCheck());
+                    
                 };
                 StopCoroutine(StartCheck());
             }
@@ -55,11 +70,26 @@ public class EnemyExtraBehavior_12 : EnemyExtraBehavior
         WaitForSeconds wait = new WaitForSeconds(0.02f);
         while(true)
         {
+            if (leechTarget == null) break;
             List<Vector3> vector3s = new List<Vector3>();
             vector3s.Add(transform.position);
             vector3s.Add(leechTarget.position);
             lineRenderer.SetPositions(vector3s.ToArray());
 
+            yield return wait;
+        }
+    }
+
+    IEnumerator Leeching()
+    {
+        WaitForSeconds wait = new WaitForSeconds(timeBetweenLeech);
+        EnemyControl enemyControl = leechTarget.GetComponent<EnemyControl>();
+        int hpPerLeech = Mathf.RoundToInt(Mathf.Ceil(enemyControl.inforEnemy.hp * percentPerLeech));
+        while (true)
+        {
+            if (leechTarget == null) break;
+            enemyControl.ReduceHP(hpPerLeech);
+            control.Heal(hpPerLeech);
             yield return wait;
         }
     }

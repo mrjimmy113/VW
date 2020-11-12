@@ -106,7 +106,7 @@ public class MissionManager : Singleton<MissionManager>
         waves = new WaveInfor[record.Waves.Count];
         for (int i = 0; i < record.Waves.Count; i++)
         {
-
+            
             WaveInfor infor = new WaveInfor(
                 ConfigurationManager.instance.wave.GetRecordByKeySearch(record.Waves[i]));
             

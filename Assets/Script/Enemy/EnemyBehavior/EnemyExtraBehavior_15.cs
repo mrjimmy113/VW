@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,7 +20,7 @@ public class EnemyExtraBehavior_15 : EnemyExtraBehavior
     public override void Setup()
     {
         control.OnEnemyDamaged += OnEnemyDamaged;
-        healAmount = Mathf.RoundToInt(control.inforEnemy.hp * healSpeed / healTime);
+        healAmount = Mathf.RoundToInt(Mathf.Ceil(control.inforEnemy.hp * healSpeed / healTime));
     }
 
     private void OnEnemyDamaged(OnEnemyDamagedParam obj)

@@ -77,3 +77,107 @@ MonoBehaviour:
     enemyDuplicateIds: 0
     coinAmount: 0
     spawnBuffDebuff: 0
+  - id: 9
+    hp: 10
+    sizeScale: 1.5
+    prefab: Enemy/Enemy05
+    isDuplicate: 0
+    enemyDuplicateIds: 0
+    coinAmount: 0
+    spawnBuffDebuff: 0
+  - id: 10
+    hp: 10
+    sizeScale: 1.5
+    prefab: Enemy/Enemy06
+    isDuplicate: 0
+    enemyDuplicateIds: 0
+    coinAmount: 0
+    spawnBuffDebuff: 0
+  - id: 11
+    hp: 10
+    sizeScale: 1.5
+    prefab: Enemy/Enemy07
+    isDuplicate: 0
+    enemyDuplicateIds: 0
+    coinAmount: 0
+    spawnBuffDebuff: 0
+  - id: 12
+    hp: 10
+    sizeScale: 1.5
+    prefab: Enemy/Enemy08
+    isDuplicate: 0
+    enemyDuplicateIds: 0
+    coinAmount: 0
+    spawnBuffDebuff: 0
+  - id: 13
+    hp: 10
+    sizeScale: 1.5
+    prefab: Enemy/Enemy09
+    isDuplicate: 0
+    enemyDuplicateIds: 0
+    coinAmount: 0
+    spawnBuffDebuff: 0
+  - id: 14
+    hp: 10
+    sizeScale: 1.5
+    prefab: Enemy/Enemy10
+    isDuplicate: 0
+    enemyDuplicateIds: 0
+    coinAmount: 0
+    spawnBuffDebuff: 0
+  - id: 15
+    hp: 10
+    sizeScale: 1.5
+    prefab: Enemy/Enemy11
+    isDuplicate: 0
+    enemyDuplicateIds: 0
+    coinAmount: 0
+    spawnBuffDebuff: 0
+  - id: 16
+    hp: 10
+    sizeScale: 1.5
+    prefab: Enemy/Enemy12
+    isDuplicate: 0
+    enemyDuplicateIds: 0
+    coinAmount: 0
+    spawnBuffDebuff: 0
+  - id: 17
+    hp: 10
+    sizeScale: 1.5
+    prefab: Enemy/Enemy13
+    isDuplicate: 0
+    enemyDuplicateIds: 0
+    coinAmount: 0
+    spawnBuffDebuff: 0
+  - id: 18
+    hp: 10
+    sizeScale: 1.5
+    prefab: Enemy/Enemy14
+    isDuplicate: 0
+    enemyDuplicateIds: 0
+    coinAmount: 0
+    spawnBuffDebuff: 0
+  - id: 19
+    hp: 10
+    sizeScale: 1.5
+    prefab: Enemy/Enemy15
+    isDuplicate: 0
+    enemyDuplicateIds: 0
+    coinAmount: 0
+    spawnBuffDebuff: 0
+  - id: 20
+    hp: 10
+    sizeScale: 1.5
+    prefab: Enemy/Enemy16
+    isDuplicate: 0
+    enemyDuplicateIds: 0
+    coinAmount: 0
+    spawnBuffDebuff: 0
+  - id: 21
+    hp: 10
+    sizeScale: 1.5
+    prefab: Enemy/Enemy17
+    isDuplicate: 0
+    enemyDuplicateIds: 0
+    coinAmount: 0
+    spawnBuffDebuff: 0

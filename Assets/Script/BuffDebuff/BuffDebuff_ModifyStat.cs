@@ -5,13 +5,14 @@ using UnityEngine;
 
 public class BuffDebuff_ModifyStat : BuffDebuff
 {
-   
-
-
-    public override void OnEffect(Transform transform)
+    public override void AfterEffect()
     {
-        PlayerControl target =  transform.GetComponent<PlayerControl>();
-        target.ApplyBuffDebuff(cf);
+        
+    }
+
+    public override void OnEffect( )
+    {
+        
         
     }
 

@@ -23,9 +23,11 @@ public class EnemyExtraBehavior_13 : EnemyExtraBehavior
         while(true)
         {
             control.isInvincible = true;
+            control.txtHp.gameObject.SetActive(false);
             yield return buffTime;
             control.isInvincible = false;
-            yield return coodDown;
+            control.txtHp.gameObject.SetActive(true);
+            yield return cd;
         }
     }
 }

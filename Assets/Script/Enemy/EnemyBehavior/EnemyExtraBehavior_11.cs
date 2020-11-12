@@ -31,7 +31,7 @@ public class EnemyExtraBehavior_11 : EnemyExtraBehavior
         infor.sizeScale = 1;
         infor.coinAmount = 0;
 
-        yield return new WaitForSeconds(3f);
+        yield return cd;
 
         while(true)
         {

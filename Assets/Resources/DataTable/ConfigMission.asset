@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   records:
   - id: 1
-    waves: 1;2;3
+    waves: 13;14;15;16
     clearEnergyReward: 5
     clearGunUnLockId: 0
   - id: 2

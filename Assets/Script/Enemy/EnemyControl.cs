@@ -22,12 +22,12 @@ public class EnemyControl : MonoBehaviour
     [Header("Enemy Child Object")]
     private Transform trans;
     [SerializeField]
-    private Transform dir = null;
-    private Vector3 direction;
+    public Transform dir = null;
+    public Vector3 direction;
     [SerializeField]
-    private Text txtHp = null;
+    public Text txtHp = null;
     [SerializeField]
-    private CircleCollider2D col = null;
+    public CircleCollider2D col = null;
     [SerializeField]
     private Transform kind_1;
     [SerializeField]
@@ -44,6 +44,11 @@ public class EnemyControl : MonoBehaviour
     public EnemyInfor inforEnemy;
 
     public float speed = 1;
+
+    public float Speed { get => speed; set => speed = value; }
+    private float oldSpeed;
+    private bool isHit = false;
+
     [SerializeField]
     public int hp = 1;
     [SerializeField]
@@ -58,11 +63,11 @@ public class EnemyControl : MonoBehaviour
 
     [SerializeField]
     private float moveSpeedPercentWhenHitted = 0.5f;
-    private float moveDegree;
+    public float moveDegree;
     public float currentSpeed;
     private Coroutine slowDownCoroutine;
     private bool isDead = false;
-    private bool isChild = false;
+    public bool isChild = false;
     public bool isInvincible = false;
 
     
@@ -96,7 +101,7 @@ public class EnemyControl : MonoBehaviour
         else ChangeDir(minStartAngle, maxStartAngle);
 
         behavior = GetComponent<EnemyExtraBehavior>();
-        behavior?.Setup();
+        if(behavior != null) behavior.Setup();
     }
 
     
@@ -265,7 +270,12 @@ public class EnemyControl : MonoBehaviour
             slowDownCoroutine = null;
         }
         slowDownCoroutine = StartCoroutine(SlowDownSpeed());
-        hp -= dmg;
+        ReduceHP(dmg);
+    }
+
+    public void ReduceHP(int amount)
+    {
+        hp -= amount;
         txtHp.text = hp.ToString();
         if (hp <= 0) Dead();
         else OnEnemyDamaged?.Invoke(null);
@@ -309,9 +319,15 @@ public class EnemyControl : MonoBehaviour
 
     IEnumerator SlowDownSpeed()
     {
-        float oldSpeed = currentSpeed;
+        if(!isHit)
+        {
+            oldSpeed = currentSpeed;
+            isHit = true;
+        }
+        
         currentSpeed = speed * moveSpeedPercentWhenHitted;
         yield return new WaitForSeconds(0.5f);
+        isHit = false;
         currentSpeed = oldSpeed;
     }
 
@@ -323,6 +339,10 @@ public class EnemyControl : MonoBehaviour
         rotateTwin1.Kill();
         rotateTwin2.Kill();
         speed = 0f;
+        if(isChild)
+        {
+            RemoveChild();
+        }
         
         if(spawnBuffDebuff)
         {

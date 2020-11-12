@@ -30,6 +30,7 @@ public class EnemyExtraBehavior_07 : EnemyExtraBehavior
             );
         if(col != null)
         {
+            
             col.GetComponent<PlayerControl>().Dead();
         }
         
