@@ -12,6 +12,7 @@ public class BuffDebuffControl : MonoBehaviour
     public event Action<int> RemoveBuffDebuffEvent;
 
     private PlayerControl playerControl;
+    private PlayerProjectileControl playerProjectileControl;
 
     private void Start()
     {
@@ -43,9 +44,7 @@ public class BuffDebuffControl : MonoBehaviour
             foreach (var d in removeList)
             {
                 buffDebuffDatas.Remove(d);
-/*                Type type = playerControl.GetType();
-                PropertyInfo prop = type.GetProperty(d.cf.FieldName);
-                prop.SetValue(playerControl, d.oldValue, null);*/
+                d.AfterEffect(d.data);
                 RemoveBuffDebuffEvent?.Invoke(d.cf.Id);
             }
 
@@ -55,7 +54,7 @@ public class BuffDebuffControl : MonoBehaviour
 
     
 
-    public void ApplyBuffDebuff(ConfigBuffDebuffRecord cf)
+    public void ApplyBuffDebuff(ConfigBuffDebuffRecord cf,OnEffect OnEffect, AfterEffect AfterEffect)
     {
         foreach (var d in buffDebuffDatas)
         {
@@ -67,15 +66,22 @@ public class BuffDebuffControl : MonoBehaviour
             }
         }
 
-/*        Type type = playerControl.GetType();
-        PropertyInfo prop = type.GetProperty(cf.FieldName);
-        int oldValue = (int)prop.GetValue(playerControl);
 
-        if (cf.IsBuff) prop.SetValue(playerControl, ((int)prop.GetValue(playerControl)) * cf.Value, null);
-        else prop.SetValue(playerControl, ((int)prop.GetValue(playerControl)) / cf.Value, null);*/
 
-        buffDebuffDatas.Add(new BuffDebuffData(cf));
+        buffDebuffDatas.Add(new BuffDebuffData(cf,AfterEffect, OnEffect.Invoke() ));
         AddBuffDebuffEvent?.Invoke(cf.Sprite, cf.Id, cf.EffectTime);
+    }
+
+    public void ChangeProjectile()
+    {
+        List<int> buffIds = new List<int>();
+        foreach(var bd in buffDebuffDatas)
+        {
+            buffIds.Add(bd.cf.Id);
+        }
+
+        playerControl.currentProjectile = 
+            playerProjectileControl.GetCurrentProjectileSprite(buffIds);
     }
 }
 
@@ -83,10 +89,27 @@ public class BuffDebuffData
 {
     public ConfigBuffDebuffRecord cf;
     public float remainTime;
+    public AfterEffect AfterEffect;
+    public EffectData data;
 
-    public BuffDebuffData(ConfigBuffDebuffRecord cf)
+    public BuffDebuffData(ConfigBuffDebuffRecord cf, AfterEffect AfterEffect,EffectData data)
     {
+        this.AfterEffect = AfterEffect;
         this.cf = cf;
+        this.data = data;
         remainTime = cf.EffectTime;
+
     }
+
+    
 }
+
+public delegate EffectData OnEffect();
+public delegate void AfterEffect(EffectData data);
+
+public class EffectData
+{
+    public int oldIntData;
+}
+
+

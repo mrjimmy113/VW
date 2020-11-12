@@ -1,3 +1,5 @@
 id,prefab,sprite,value,isBuff,fieldName,effectTime
-1,BuffDebuff/BuffDebuff_ModifyStat,icon_c_fireRate,3,1,FireRate,10
-2,BuffDebuff/BuffDebuff_ModifyStat,icon_c_playerDmg,2,1,Damage,10
+1,BuffDebuff/BuffDebuff_ModifyStatFireRate,icon_c_fireRate,3,1,FireRate,10
+2,BuffDebuff/BuffDebuff_ModifyStatPlayerDmg,icon_c_playerDmg,2,1,Damage,10
+3,BuffDebuff/BuffDebuff_DropGold,icon_c_ buffGold,0,1,0,10
+4,BuffDebuff/BuffDebuff_PushProjectile,,0,1,0,10

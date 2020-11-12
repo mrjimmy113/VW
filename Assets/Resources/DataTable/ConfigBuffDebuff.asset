@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   records:
   - id: 1
-    prefab: BuffDebuff/BuffDebuff_ModifyStat
+    prefab: BuffDebuff/BuffDebuff_ModifyStatFireRate
     sprite: icon_c_fireRate
     value: 3
     isBuff: 1
     fieldName: FireRate
     effectTime: 10
   - id: 2
-    prefab: BuffDebuff/BuffDebuff_ModifyStat
+    prefab: BuffDebuff/BuffDebuff_ModifyStatPlayerDmg
     sprite: icon_c_playerDmg
     value: 2
     isBuff: 1

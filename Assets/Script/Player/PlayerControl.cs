@@ -58,8 +58,9 @@ public class PlayerControl : MonoBehaviour
 
     public event Action OnPlayerDead;
 
-    
+    public Sprite normalProjectile;
 
+    public Sprite currentProjectile;
 
     
 
@@ -76,6 +77,7 @@ public class PlayerControl : MonoBehaviour
         
         timeAttack = rof;
         currentSpeed = speed;
+        currentProjectile = normalProjectile;
     }
 
     private void Start()
@@ -201,6 +203,7 @@ public class PlayerControl : MonoBehaviour
             data.impactPoolName = impact.name;
             data.toPos = p;
             data.toPosTime = 0.1f;
+            data.projectileSprite = currentProjectile;
             pj.GetComponent<ProjectileControl>().Setup(data);
         }
         

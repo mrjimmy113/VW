@@ -20,7 +20,7 @@ MonoBehaviour:
     isDuplicate: 0
     enemyDuplicateIds: 0
     coinAmount: 1
-    spawnBuffDebuff: 0
+    spawnBuffDebuff: 1
   - id: 2
     hp: 4
     sizeScale: 1.5

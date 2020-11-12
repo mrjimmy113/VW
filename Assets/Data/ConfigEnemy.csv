@@ -1,5 +1,5 @@
 id,hp,sizeScale,prefab,isDuplicate,enemyDuplicateIds,coinAmount,spawnBuffDebuff
-1,3,1,Enemy/Enemy00,0,0,1,0
+1,3,1,Enemy/Enemy00,0,0,1,1
 2,4,1.5,Enemy/Enemy00,0,0,2,0
 3,5,2,Enemy/Enemy00,0,0,3,0
 4,6,2,Enemy/Enemy00,1,1;1,0,1

@@ -44,6 +44,16 @@ public static class MyUltis
         return ls;
     }
 
+    public static string ListIntToString(this List<int> input)
+    {
+        string result = "";
+        foreach(var i in input)
+        {
+            result += (i + "");
+        }
+        return result;
+    }
+
     public static string ToMinuteAndSecond(this int remainTime)
     {
         int minute = remainTime / 60;

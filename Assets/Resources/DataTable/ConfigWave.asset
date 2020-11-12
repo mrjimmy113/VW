@@ -16,8 +16,8 @@ MonoBehaviour:
   - id: 1
     timeDelayOnEachSpawn: 1
     timeDelayToSpawn: 1
-    enemyIds: 8
-    numbers: 3
+    enemyIds: 1
+    numbers: 5
   - id: 2
     timeDelayOnEachSpawn: 1
     timeDelayToSpawn: 1

@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class BuffDebuff_CallSupport : BuffDebuff
 {
-    public override void AfterEffect()
-    {
-     
-    }
-
-    public override void OnEffect()
+    public override void AfterEffect(EffectData data)
     {
         
+    }
+
+    public override EffectData OnEffect()
+    {
+        return null;
     }
 }

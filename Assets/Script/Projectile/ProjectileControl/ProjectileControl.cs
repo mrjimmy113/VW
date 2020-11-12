@@ -10,6 +10,7 @@ public class ProjectileData
     public Vector3 toPos;
     public float toPosTime;
     public bool isRight;
+    public Sprite projectileSprite;
 }
 
 
@@ -25,6 +26,7 @@ public class ProjectileControl : MonoBehaviour
 
     public ProjectileData data;
     public Transform model;
+    private SpriteRenderer rd;
 
     private void Awake()
     {
@@ -33,6 +35,7 @@ public class ProjectileControl : MonoBehaviour
         if (impact == null) impact = GetComponent<ProjectileImpact>();
 
         trans = transform;
+        rd = model.GetComponent<SpriteRenderer>();
     }
 
     private void OnEnable()
@@ -82,6 +85,7 @@ public class ProjectileControl : MonoBehaviour
     public virtual void Setup(ProjectileData data)
     {
         this.data = data;
+        if (data.projectileSprite != null) rd.sprite = data.projectileSprite;
         movement.Setup();
     }
 
