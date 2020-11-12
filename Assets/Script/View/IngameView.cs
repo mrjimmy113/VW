@@ -100,6 +100,10 @@ public class IngameView : BaseView
             item.transform.localScale = Vector3.one;
             buffDebuffItems.Add(item);
         }
+        else
+        {
+            item.gameObject.SetActive(true);
+        }
         item.GetComponent<BuffDebuffItem>().Setup(sprite, id,remainTime);
     }
 

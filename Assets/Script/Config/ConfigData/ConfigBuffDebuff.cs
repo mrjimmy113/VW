@@ -19,6 +19,10 @@ public class ConfigBuffDebuffRecord
     private string fieldName;
     [SerializeField]
     private float effectTime;
+    [SerializeField]
+    private int isChangeProjectile;
+    [SerializeField]
+    private int isEnemy;
 
     public int Id { get => id;}
     public string Prefab { get => prefab;}
@@ -27,6 +31,8 @@ public class ConfigBuffDebuffRecord
     public bool IsBuff { get => isBuff == 1? true : false;}
     public string FieldName { get => fieldName;}
     public float EffectTime { get => effectTime;}
+    public bool IsChangeProjectile { get => isChangeProjectile == 1 ? true : false;  }
+    public bool IsEnemy { get => isEnemy == 1 ? true : false; }
 }
 
 public class ConfigBuffDebuff :BYDataTable<ConfigBuffDebuffRecord> 

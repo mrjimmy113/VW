@@ -11,7 +11,10 @@ public class ProjectileData
     public float toPosTime;
     public bool isRight;
     public Sprite projectileSprite;
+    public ProjectileExtraBehavior[] extraBehaviors;
 }
+
+public delegate void ProjectileExtraBehavior(Collider2D col);
 
 
 public class ProjectileControl : MonoBehaviour
@@ -70,6 +73,13 @@ public class ProjectileControl : MonoBehaviour
             impact.OnImpact(cols);
             if (cols.Length > 0)
             {
+                foreach(var c in cols)
+                {
+                    foreach(var b in data.extraBehaviors)
+                    {
+                        b.Invoke(c);
+                    }
+                }
                 OnHitEnemy();
             }
 

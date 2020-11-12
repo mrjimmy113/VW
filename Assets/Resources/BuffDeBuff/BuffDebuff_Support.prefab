@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7194164708373375394}
-  - component: {fileID: 5538708930863730932}
+  - component: {fileID: 7401213102484961862}
   m_Layer: 0
-  m_Name: BuffDebuff_ModifyStatPlayerDmg
+  m_Name: BuffDebuff_Support
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5538708930863730932
+--- !u!114 &7401213102484961862
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,7 +41,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7194164708373375420}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e375818a59aa65f42954d5c39c6f3b26, type: 3}
+  m_Script: {fileID: 11500000, guid: 3ae6f7902498fe748a8f37d672d9f5ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   effectTime: 0

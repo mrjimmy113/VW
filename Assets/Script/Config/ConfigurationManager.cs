@@ -34,6 +34,8 @@ public class ConfigurationManager : Singleton<ConfigurationManager>
 
     public ConfigBuffDebuff buffDebuff;
 
+    public ConfigProjectileBuff pBuff;
+
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
@@ -83,6 +85,11 @@ public class ConfigurationManager : Singleton<ConfigurationManager>
 
         buffDebuff = Resources.Load("DataTable/ConfigBuffDebuff", typeof(ScriptableObject)) as ConfigBuffDebuff;
         yield return new WaitUntil(() => buffDebuff != null);
+
+        pBuff = Resources.Load("DataTable/ConfigProjectileBuff", typeof(ScriptableObject)) as ConfigProjectileBuff;
+        yield return new WaitUntil(() => pBuff != null);
+
+        
 
         callback?.Invoke();
     }

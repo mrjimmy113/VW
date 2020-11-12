@@ -244,8 +244,9 @@ MonoBehaviour:
   damage: 1
   fireRate: 3
   spaceBetweenProjectile: 0.2
-  speed: 100
+  speed: 10
   normalProjectile: {fileID: 21300000, guid: 4ce369d1a4c36dd418f609cabfbad2b4, type: 3}
+  currentProjectile: {fileID: 0}
 --- !u!61 &2905527896036860857
 BoxCollider2D:
   m_ObjectHideFlags: 0

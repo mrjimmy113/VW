@@ -27,6 +27,8 @@ public class PlayerControl : MonoBehaviour
     private WeaponControl weaponControl;
     private List<WeaponBehavior> activeGunList;
     private Vector3 newDestination;
+    private Vector3 moveOffset = Vector3.zero;
+    private Vector3 rootPos;
 
 
     [Header("Stat")]
@@ -50,6 +52,8 @@ public class PlayerControl : MonoBehaviour
     public int Damage { get => damage; set => damage = value; }
 
     public float Speed { get => speed; set => speed = value; }
+
+    public float CurrentSpeed { get => currentSpeed; set => currentSpeed = value; }
 
 
     private bool isFire = false;
@@ -127,6 +131,7 @@ public class PlayerControl : MonoBehaviour
     private void StartGame()
     {
         startPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        rootPos = trans.position;
         InputManager.instance.OnControlDown += OnControlDown;
         InputManager.instance.OnControlOnDown += OnControlOnDown;
         InputManager.instance.OnControlUp += OnControlUp;
@@ -220,6 +225,7 @@ public class PlayerControl : MonoBehaviour
         Time.timeScale = 1f;
         isFire = true;
         startPoint = Camera.main.ScreenToWorldPoint(point);
+        rootPos = trans.position;
     }
 
     private void OnControlOnDown(Vector2 point)
@@ -228,16 +234,20 @@ public class PlayerControl : MonoBehaviour
         
         
         Vector2 p = Camera.main.ScreenToWorldPoint(point);
+        moveOffset = p - startPoint;
 
-        Vector3 pos = p - startPoint;
-
-        Vector2 newPosition = trans.position + pos;
+        Vector2 newPosition = rootPos + moveOffset;
 
         newPosition = Boudary.instance.ClampBoudary(newPosition);
 
         newDestination = newPosition;
 
-        startPoint = p;
+
+    
+
+       
+
+        
     }
 
     private Vector3[] GenerateToPos()

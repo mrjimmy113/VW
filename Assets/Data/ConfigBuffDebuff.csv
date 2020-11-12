@@ -1,5 +1,11 @@
-id,prefab,sprite,value,isBuff,fieldName,effectTime
-1,BuffDebuff/BuffDebuff_ModifyStatFireRate,icon_c_fireRate,3,1,FireRate,10
-2,BuffDebuff/BuffDebuff_ModifyStatPlayerDmg,icon_c_playerDmg,2,1,Damage,10
-3,BuffDebuff/BuffDebuff_DropGold,icon_c_ buffGold,0,1,0,10
-4,BuffDebuff/BuffDebuff_PushProjectile,,0,1,0,10
+id,prefab,sprite,value,isBuff,fieldName,effectTime,isChangeProjectile,isEnemy
+1,BuffDebuff/BuffDebuff_ModifyStatFireRate,icon_c_fireRate,3,1,FireRate,10,0,0
+2,BuffDebuff/BuffDebuff_ModifyStatPlayerDmg,icon_c_playerDmg,2,1,Damage,10,1,0
+3,BuffDebuff/BuffDebuff_DropGold,icon_c_ buffGold,0,1,,10,1,0
+4,BuffDebuff/BuffDebuff_PushProjectile,icon_c_push,0,1,,10,1,0
+5,BuffDebuff/BuffDebuff_WeaponSize,icon_c_weaponSize,2,1,,10,0,0
+6,BuffDebuff/BuffDebuff_Support,icon_c_support,0,1,,10,0,0
+7,BuffDebuff/BuffDebuff_SlowEnemy,icon_c_buffSlow,2,1,,10,0,1
+8,BuffDebuff/BuffDebuff_SlowPlayer,icon_c_slowPlayer,2,0,CurrentSpeed,10,0,0
+9,BuffDebuff/BuffDebuff_EnemySpeedUp,icon_c_enemySpeedUp,2,0,,10,0,1
+10,BuffDebuff/BuffDebuff_EnemyScaleUp,icon_c_enemyScale,2,0,,10,0,1

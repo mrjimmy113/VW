@@ -20,6 +20,8 @@ MonoBehaviour:
     isBuff: 1
     fieldName: FireRate
     effectTime: 10
+    isChangeProjectile: 0
+    isEnemy: 0
   - id: 2
     prefab: BuffDebuff/BuffDebuff_ModifyStatPlayerDmg
     sprite: icon_c_playerDmg
@@ -27,3 +29,77 @@ MonoBehaviour:
     isBuff: 1
     fieldName: Damage
     effectTime: 10
+    isChangeProjectile: 1
+    isEnemy: 0
+  - id: 3
+    prefab: BuffDebuff/BuffDebuff_DropGold
+    sprite: icon_c_ buffGold
+    value: 0
+    isBuff: 1
+    fieldName: 
+    effectTime: 10
+    isChangeProjectile: 1
+    isEnemy: 0
+  - id: 4
+    prefab: BuffDebuff/BuffDebuff_PushProjectile
+    sprite: icon_c_push
+    value: 0
+    isBuff: 1
+    fieldName: 
+    effectTime: 10
+    isChangeProjectile: 1
+    isEnemy: 0
+  - id: 5
+    prefab: BuffDebuff/BuffDebuff_WeaponSize
+    sprite: icon_c_weaponSize
+    value: 2
+    isBuff: 1
+    fieldName: 
+    effectTime: 10
+    isChangeProjectile: 0
+    isEnemy: 0
+  - id: 6
+    prefab: BuffDebuff/BuffDebuff_Support
+    sprite: icon_c_support
+    value: 0
+    isBuff: 1
+    fieldName: 
+    effectTime: 10
+    isChangeProjectile: 0
+    isEnemy: 0
+  - id: 7
+    prefab: BuffDebuff/BuffDebuff_SlowEnemy
+    sprite: icon_c_buffSlow
+    value: 2
+    isBuff: 1
+    fieldName: 
+    effectTime: 10
+    isChangeProjectile: 0
+    isEnemy: 1
+  - id: 8
+    prefab: BuffDebuff/BuffDebuff_SlowPlayer
+    sprite: icon_c_slowPlayer
+    value: 2
+    isBuff: 0
+    fieldName: CurrentSpeed
+    effectTime: 10
+    isChangeProjectile: 0
+    isEnemy: 0
+  - id: 9
+    prefab: BuffDebuff/BuffDebuff_EnemySpeedUp
+    sprite: icon_c_enemySpeedUp
+    value: 2
+    isBuff: 0
+    fieldName: 
+    effectTime: 10
+    isChangeProjectile: 0
+    isEnemy: 1
+  - id: 10
+    prefab: BuffDebuff/BuffDebuff_EnemyScaleUp
+    sprite: icon_c_enemyScale
+    value: 2
+    isBuff: 0
+    fieldName: 
+    effectTime: 10
+    isChangeProjectile: 0
+    isEnemy: 1

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
 
-public class BuffDebuffControl : MonoBehaviour
+public class BuffDebuffControl : Singleton<BuffDebuffControl>
 {
     private List<BuffDebuffData> buffDebuffDatas = new List<BuffDebuffData>();
     public event Action<string, int, float> AddBuffDebuffEvent;
@@ -12,12 +12,12 @@ public class BuffDebuffControl : MonoBehaviour
     public event Action<int> RemoveBuffDebuffEvent;
 
     private PlayerControl playerControl;
-    private PlayerProjectileControl playerProjectileControl;
+    
 
     private void Start()
     {
         MissionManager.instance.OnMissionStart += MissionStart;
-        playerControl = GetComponent<PlayerControl>();
+        playerControl = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControl>();
     }
 
     private void MissionStart()
@@ -46,6 +46,7 @@ public class BuffDebuffControl : MonoBehaviour
                 buffDebuffDatas.Remove(d);
                 d.AfterEffect(d.data);
                 RemoveBuffDebuffEvent?.Invoke(d.cf.Id);
+                ChangeProjectile();
             }
 
             yield return waitForSeconds;
@@ -66,10 +67,11 @@ public class BuffDebuffControl : MonoBehaviour
             }
         }
 
-
+        
 
         buffDebuffDatas.Add(new BuffDebuffData(cf,AfterEffect, OnEffect.Invoke() ));
         AddBuffDebuffEvent?.Invoke(cf.Sprite, cf.Id, cf.EffectTime);
+        ChangeProjectile();
     }
 
     public void ChangeProjectile()
@@ -77,11 +79,13 @@ public class BuffDebuffControl : MonoBehaviour
         List<int> buffIds = new List<int>();
         foreach(var bd in buffDebuffDatas)
         {
-            buffIds.Add(bd.cf.Id);
+            if(bd.cf.IsChangeProjectile) buffIds.Add(bd.cf.Id);
         }
 
-        playerControl.currentProjectile = 
-            playerProjectileControl.GetCurrentProjectileSprite(buffIds);
+        playerControl.currentProjectile =
+              SpriteLiblary.instance.GetSpriteByName(ConfigurationManager.instance.pBuff.GetByIdSequences(buffIds).Sprite);
+        ;
+
     }
 }
 
@@ -109,7 +113,7 @@ public delegate void AfterEffect(EffectData data);
 
 public class EffectData
 {
-    public int oldIntData;
+    
 }
 
 
