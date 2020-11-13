@@ -235,6 +235,7 @@ public class MissionManager : Singleton<MissionManager>
     public void AddGoldEanred(int amount)
     {
         goldEarned += amount * goldValue;
+        OnGoldEarnedIncrease?.Invoke(goldEarned);
     }
 
     private void LoseGame()

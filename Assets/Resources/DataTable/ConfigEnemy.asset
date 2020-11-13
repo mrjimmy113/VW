@@ -12,4 +12,172 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e732e4c3a635a34598d595b83683b89, type: 3}
   m_Name: ConfigEnemy
   m_EditorClassIdentifier: 
-  records: []
+  records:
+  - id: 1
+    hp: 3
+    sizeScale: 1
+    prefab: Enemy/Enemy00
+    isDuplicate: 0
+    enemyDuplicateIds: 0
+    coinAmount: 0
+    spawnBuffDebuff: 1
+  - id: 2
+    hp: 4
+    sizeScale: 1.5
+    prefab: Enemy/Enemy00
+    isDuplicate: 0
+    enemyDuplicateIds: 0
+    coinAmount: 2
+    spawnBuffDebuff: 0
+  - id: 3
+    hp: 5
+    sizeScale: 2
+    prefab: Enemy/Enemy00
+    isDuplicate: 0
+    enemyDuplicateIds: 0
+    coinAmount: 3
+    spawnBuffDebuff: 0
+  - id: 4
+    hp: 6
+    sizeScale: 2
+    prefab: Enemy/Enemy00
+    isDuplicate: 1
+    enemyDuplicateIds: 1;1
+    coinAmount: 0
+    spawnBuffDebuff: 1
+  - id: 5
+    hp: 10
+    sizeScale: 2
+    prefab: Enemy/Enemy01
+    isDuplicate: 0
+    enemyDuplicateIds: 0
+    coinAmount: 3
+    spawnBuffDebuff: 1
+  - id: 6
+    hp: 10
+    sizeScale: 2
+    prefab: Enemy/Enemy02
+    isDuplicate: 0
+    enemyDuplicateIds: 0
+    coinAmount: 1
+    spawnBuffDebuff: 0
+  - id: 7
+    hp: 10
+    sizeScale: 1.5
+    prefab: Enemy/Enemy03
+    isDuplicate: 0
+    enemyDuplicateIds: 0
+    coinAmount: 0
+    spawnBuffDebuff: 0
+  - id: 8
+    hp: 10
+    sizeScale: 1.5
+    prefab: Enemy/Enemy04
+    isDuplicate: 0
+    enemyDuplicateIds: 0
+    coinAmount: 0
+    spawnBuffDebuff: 0
+  - id: 9
+    hp: 10
+    sizeScale: 1.5
+    prefab: Enemy/Enemy05
+    isDuplicate: 0
+    enemyDuplicateIds: 0
+    coinAmount: 0
+    spawnBuffDebuff: 0
+  - id: 10
+    hp: 10
+    sizeScale: 1.5
+    prefab: Enemy/Enemy06
+    isDuplicate: 0
+    enemyDuplicateIds: 0
+    coinAmount: 0
+    spawnBuffDebuff: 0
+  - id: 11
+    hp: 10
+    sizeScale: 1.5
+    prefab: Enemy/Enemy07
+    isDuplicate: 0
+    enemyDuplicateIds: 0
+    coinAmount: 0
+    spawnBuffDebuff: 0
+  - id: 12
+    hp: 10
+    sizeScale: 1.5
+    prefab: Enemy/Enemy08
+    isDuplicate: 0
+    enemyDuplicateIds: 0
+    coinAmount: 0
+    spawnBuffDebuff: 0
+  - id: 13
+    hp: 10
+    sizeScale: 1.5
+    prefab: Enemy/Enemy09
+    isDuplicate: 0
+    enemyDuplicateIds: 0
+    coinAmount: 0
+    spawnBuffDebuff: 0
+  - id: 14
+    hp: 10
+    sizeScale: 1.5
+    prefab: Enemy/Enemy10
+    isDuplicate: 0
+    enemyDuplicateIds: 0
+    coinAmount: 0
+    spawnBuffDebuff: 0
+  - id: 15
+    hp: 10
+    sizeScale: 1.5
+    prefab: Enemy/Enemy11
+    isDuplicate: 0
+    enemyDuplicateIds: 0
+    coinAmount: 0
+    spawnBuffDebuff: 0
+  - id: 16
+    hp: 10
+    sizeScale: 1.5
+    prefab: Enemy/Enemy12
+    isDuplicate: 0
+    enemyDuplicateIds: 0
+    coinAmount: 0
+    spawnBuffDebuff: 0
+  - id: 17
+    hp: 10
+    sizeScale: 1.5
+    prefab: Enemy/Enemy13
+    isDuplicate: 0
+    enemyDuplicateIds: 0
+    coinAmount: 0
+    spawnBuffDebuff: 0
+  - id: 18
+    hp: 10
+    sizeScale: 1.5
+    prefab: Enemy/Enemy14
+    isDuplicate: 0
+    enemyDuplicateIds: 0
+    coinAmount: 0
+    spawnBuffDebuff: 0
+  - id: 19
+    hp: 10
+    sizeScale: 1.5
+    prefab: Enemy/Enemy15
+    isDuplicate: 0
+    enemyDuplicateIds: 0
+    coinAmount: 0
+    spawnBuffDebuff: 0
+  - id: 20
+    hp: 10
+    sizeScale: 1.5
+    prefab: Enemy/Enemy16
+    isDuplicate: 0
+    enemyDuplicateIds: 0
+    coinAmount: 0
+    spawnBuffDebuff: 0
+  - id: 21
+    hp: 10
+    sizeScale: 1.5
+    prefab: Enemy/Enemy17
+    isDuplicate: 0
+    enemyDuplicateIds: 0
+    coinAmount: 0
+    spawnBuffDebuff: 0
