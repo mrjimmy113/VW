@@ -6,13 +6,13 @@ public class BuffDebuff_SlowPlayer : BuffDebuff
 {
     public override void AfterEffect(EffectData data)
     {
-        PlayerControl playerControl = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControl>();
-        playerControl.FireRate = playerControl.FireRate * cf.Value;
+        PlayerControl playerControl = BuffDebuffControl.instance.playerControl;
+        playerControl.CurrentSpeed = playerControl.CurrentSpeed * cf.Value;
     }
 
     public override EffectData OnEffect()
     {
-        PlayerControl playerControl = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControl>();
+        PlayerControl playerControl = BuffDebuffControl.instance.playerControl;
         EffectData data = new EffectData();
         playerControl.CurrentSpeed = playerControl.CurrentSpeed / cf.Value;
 

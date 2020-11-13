@@ -166,8 +166,8 @@ public class MissionManager : Singleton<MissionManager>
                 {
 
                     EnemyInfor infor = w.enemyInfor[i];
-                    GameObject obj = Instantiate(infor.prefab, null);
-                    EnemyControl enemy = obj.GetComponent<EnemyControl>();
+
+                    EnemyControl enemy = EnemyFactory.instance.CreateEnemy(infor.prefab);
                     enemy.Setup(infor,false,true);
                     enemy.OnEnemyDead += OnEnemyDead;
                     enemy.transform.position = enemy.GetTopPos();
@@ -212,7 +212,7 @@ public class MissionManager : Singleton<MissionManager>
         while(true)
         {
             yield return new WaitForSecondsRealtime(0.5f);
-            if (totalMissionEnemyDead == totalMissionEnemy)
+            if (EnemyFactory.instance.activeEnemy.Count == 0)
             {
                 Time.timeScale = 1f;
                 OnMissionClearEvent?.Invoke();
@@ -230,6 +230,11 @@ public class MissionManager : Singleton<MissionManager>
                 break;
             }
         }
+    }
+
+    public void AddGoldEanred(int amount)
+    {
+        goldEarned += amount * goldValue;
     }
 
     private void LoseGame()

@@ -20,7 +20,10 @@ public class ProjectileControl_Gun02 : ProjectileControl
             
             SpawnImpact();
             Collider2D[] cols = detect.DetectEnemy(trans.position);
-            impact.OnImpact(cols);
+            foreach(var i in impact)
+            {
+                i.OnImpact(cols);
+            }
             Despawn();
         }
 

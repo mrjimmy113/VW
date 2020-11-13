@@ -46,14 +46,17 @@ public class EnemyExtraBehavior_06 : EnemyExtraBehavior
                     isUseSkill = true;
                     control.currentSpeed = 0;
                     c.gameObject.SetActive(false);
-                    
+
+                    EnemyControl old = c.GetComponent<EnemyControl>();
+
                     EnemyInfor newEnemyInfor = control.inforEnemy;
-                    newEnemyInfor.hp = c.GetComponent<EnemyControl>().hp;
+                    newEnemyInfor.hp =old.hp;
                     newEnemyInfor.sizeScale = control.inforEnemy.sizeScale;
-                    
+
+                    EnemyFactory.instance.RemoveEnemy(old);
                     Destroy(c.gameObject);
 
-                    Transform newEnemy = Instantiate(prefab, null);
+                    EnemyControl newEnemy = EnemyFactory.instance.CreateEnemy(prefab.gameObject);
                     newEnemy.gameObject.SetActive(false);
                     
 
@@ -63,7 +66,7 @@ public class EnemyExtraBehavior_06 : EnemyExtraBehavior
                     yield return new WaitForSeconds(2f);
                     control.currentSpeed = control.speed;
                     newEnemy.gameObject.SetActive(true);
-                    newEnemy.GetComponent<EnemyControl>().Setup(newEnemyInfor, newEnemyInfor.isDuplicate, true);
+                    newEnemy.Setup(newEnemyInfor, newEnemyInfor.isDuplicate, true);
                     break;
                 }
             }

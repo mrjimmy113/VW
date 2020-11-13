@@ -56,6 +56,11 @@ public class IngameView : BaseView
      
         }
 
+        foreach(var bd in buffDebuffItems)
+        {
+            bd.gameObject.SetActive(false);
+        }
+
     }
 
     private void OnGameEnd(bool isWin)

@@ -11,7 +11,7 @@ public class BuffDebuffControl : Singleton<BuffDebuffControl>
     public event Action<int, float> BuffDebuffProgressEvent;
     public event Action<int> RemoveBuffDebuffEvent;
 
-    private PlayerControl playerControl;
+    public PlayerControl playerControl;
     
 
     private void Start()
@@ -27,14 +27,16 @@ public class BuffDebuffControl : Singleton<BuffDebuffControl>
 
     IEnumerator CheckBuffDebuff()
     {
-        WaitForSeconds waitForSeconds = new WaitForSeconds(0.2f);
+        float timeCheck = 0.02f;
+        WaitForSeconds waitForSeconds = new WaitForSeconds(timeCheck);
         while (true)
         {
             List<BuffDebuffData> removeList = new List<BuffDebuffData>();
             foreach (var d in buffDebuffDatas)
             {
-                d.remainTime -= 0.2f;
+                d.remainTime -= timeCheck;
                 BuffDebuffProgressEvent?.Invoke(d.cf.Id, d.remainTime);
+                
                 if (d.remainTime <= 0)
                 {
                     removeList.Add(d);
@@ -43,6 +45,8 @@ public class BuffDebuffControl : Singleton<BuffDebuffControl>
 
             foreach (var d in removeList)
             {
+/*                if (d.data != null && d.data.onNewEnemyAddEvent != null)
+                    EnemyFactory.instance.OnNewEnemyAddEvent -= d.data.onNewEnemyAddEvent;*/
                 buffDebuffDatas.Remove(d);
                 d.AfterEffect(d.data);
                 RemoveBuffDebuffEvent?.Invoke(d.cf.Id);
@@ -67,9 +71,12 @@ public class BuffDebuffControl : Singleton<BuffDebuffControl>
             }
         }
 
-        
 
-        buffDebuffDatas.Add(new BuffDebuffData(cf,AfterEffect, OnEffect.Invoke() ));
+        EffectData data = OnEffect.Invoke();
+        
+/*        if (data != null && data.onNewEnemyAddEvent != null) 
+            EnemyFactory.instance.OnNewEnemyAddEvent += data.onNewEnemyAddEvent;*/
+        buffDebuffDatas.Add(new BuffDebuffData(cf,AfterEffect, data ));
         AddBuffDebuffEvent?.Invoke(cf.Sprite, cf.Id, cf.EffectTime);
         ChangeProjectile();
     }
@@ -110,10 +117,11 @@ public class BuffDebuffData
 
 public delegate EffectData OnEffect();
 public delegate void AfterEffect(EffectData data);
+public delegate void OnNewEnemyAddEvent(OnNewEnemyAddParam param);
 
 public class EffectData
 {
-    
+    public OnNewEnemyAddEvent onNewEnemyAddEvent;
 }
 
 

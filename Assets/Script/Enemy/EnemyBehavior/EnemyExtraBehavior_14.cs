@@ -41,9 +41,8 @@ public class EnemyExtraBehavior_14 : EnemyExtraBehavior
 
             for (int i = 0; i < numberOfShoot; i++)
             {
-                Transform obj = Instantiate(prefab, null);
-                obj.position = transform.position;
-                EnemyControl enemyControl = obj.GetComponent<EnemyControl>();
+                EnemyControl enemyControl = EnemyFactory.instance.CreateEnemy(prefab.gameObject);
+                enemyControl.transform.position = transform.position;
                 enemyControl.Setup(infor, false, false);
                 enemyControl.SetDirection(startAngle);
                 startAngle = startAngle.NextAngle(360 / numberOfShoot);

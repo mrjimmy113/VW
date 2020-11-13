@@ -35,13 +35,9 @@ public class EnemyExtraBehavior_11 : EnemyExtraBehavior
 
         while(true)
         {
-            Transform obj = Instantiate(prefab, null);
-            obj.position = transform.position;
-
-            obj.GetComponent<EnemyControl>().Setup(infor, false, false);
-
-
-            
+            EnemyControl e = EnemyFactory.instance.CreateEnemy(prefab.gameObject);
+            e.transform.position = transform.position;
+            e.Setup(infor, false, false);
             yield return cd;
             
         }

@@ -9,6 +9,7 @@ public class OnEnemyDeadParam
 {
     public int coinAmount;
     public bool isCountDead;
+    public EnemyControl instance;
 }
 
 public class OnEnemyDamagedParam
@@ -46,7 +47,6 @@ public class EnemyControl : MonoBehaviour
     public float speed = 1;
 
     public float Speed { get => speed; set => speed = value; }
-    private float oldSpeed;
     private bool isHit = false;
 
     [SerializeField]
@@ -85,6 +85,8 @@ public class EnemyControl : MonoBehaviour
     private float maxStartAngle = 320;
 
     private bool isCountOnDead = false;
+
+    public List<int> appliedBuffDebuffId = new List<int>();
 
     public void Setup(EnemyInfor enemyInfor, bool isDuplication, bool isCountOnDead)
     {
@@ -321,14 +323,13 @@ public class EnemyControl : MonoBehaviour
     {
         if(!isHit)
         {
-            oldSpeed = currentSpeed;
+            currentSpeed = currentSpeed * moveSpeedPercentWhenHitted;
             isHit = true;
         }
-        
-        currentSpeed = speed * moveSpeedPercentWhenHitted;
+
         yield return new WaitForSeconds(0.5f);
         isHit = false;
-        currentSpeed = oldSpeed;
+        currentSpeed = currentSpeed / moveSpeedPercentWhenHitted;
     }
 
     private void Dead()
@@ -357,8 +358,8 @@ public class EnemyControl : MonoBehaviour
             for (int i = 0; i < duplication.Length; i++)
             {
                 EnemyInfor infor = duplication[i];
-                GameObject obj = Instantiate(infor.prefab, null);
-                EnemyControl enemy = obj.GetComponent<EnemyControl>();
+
+                EnemyControl enemy = EnemyFactory.instance.CreateEnemy(infor.prefab);
                 enemy.Setup(infor, true, true);
                 enemy.trans.position = trans.position;
 
@@ -368,11 +369,22 @@ public class EnemyControl : MonoBehaviour
         OnEnemyDeadParam param = new OnEnemyDeadParam();
         param.coinAmount = coinAmount;
         param.isCountDead = isCountOnDead;
+        param.instance = this;
         OnEnemyDead?.Invoke(param);
         model.gameObject.SetActive(false);
         deadAnim.gameObject.SetActive(true);
         Destroy(gameObject, 1f);
 
+
+    }
+
+    public void AddBuffDeBuffId()
+    {
+
+    }
+
+    public void RemoveBuffDebuffId()
+    {
 
     }
 

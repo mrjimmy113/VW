@@ -7,7 +7,7 @@ public class BuffDebuff_ModifyStatFireRate : BuffDebuff
 {
     public override EffectData OnEffect()
     {
-        PlayerControl playerControl = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControl>();
+        PlayerControl playerControl = BuffDebuffControl.instance.playerControl;
         EffectData data = new EffectData();
         playerControl.FireRate = playerControl.FireRate * cf.Value;
         
@@ -18,7 +18,7 @@ public class BuffDebuff_ModifyStatFireRate : BuffDebuff
 
     public override void AfterEffect(EffectData data)
     {
-        PlayerControl playerControl = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControl>();
+        PlayerControl playerControl = BuffDebuffControl.instance.playerControl;
         playerControl.FireRate = playerControl.FireRate / cf.Value;
     }
 

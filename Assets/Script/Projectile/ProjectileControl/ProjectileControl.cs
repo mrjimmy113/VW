@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,7 +12,9 @@ public class ProjectileData
     public float toPosTime;
     public bool isRight;
     public Sprite projectileSprite;
-    public ProjectileExtraBehavior[] extraBehaviors;
+    public bool isPush = false;
+    public bool isDropGold = false;
+    
 }
 
 public delegate void ProjectileExtraBehavior(Collider2D col);
@@ -21,7 +24,7 @@ public class ProjectileControl : MonoBehaviour
 {
     protected ProjectileMovement movement = null;
     protected ProjectileDetect detect = null;
-    protected ProjectileImpact impact = null;
+    protected ProjectileImpact[] impact = null;
     protected Transform trans;
 
     [SerializeField]
@@ -35,7 +38,7 @@ public class ProjectileControl : MonoBehaviour
     {
         if (movement == null) movement = GetComponent<ProjectileMovement>();
         if (detect == null) detect = GetComponent<ProjectileDetect>();
-        if (impact == null) impact = GetComponent<ProjectileImpact>();
+        if (impact == null) impact = GetComponents<ProjectileImpact>();
 
         trans = transform;
         rd = model.GetComponent<SpriteRenderer>();
@@ -69,17 +72,15 @@ public class ProjectileControl : MonoBehaviour
         while(true)
         {
             yield return wait;
+            Debug.Log(gameObject.name);
             Collider2D[] cols = detect.DetectEnemy(trans.position);
-            impact.OnImpact(cols);
+            foreach(var i in impact)
+            {
+                i.OnImpact(cols);
+            }
             if (cols.Length > 0)
             {
-                foreach(var c in cols)
-                {
-                    foreach(var b in data.extraBehaviors)
-                    {
-                        b.Invoke(c);
-                    }
-                }
+              
                 OnHitEnemy();
             }
 
@@ -96,6 +97,15 @@ public class ProjectileControl : MonoBehaviour
     {
         this.data = data;
         if (data.projectileSprite != null) rd.sprite = data.projectileSprite;
+
+        ProjectileImpact_Drop_Coin drop_Coin = 
+           (ProjectileImpact_Drop_Coin) GetImpactByTypeName(typeof(ProjectileImpact_Drop_Coin).Name);
+        if (drop_Coin != null) drop_Coin.enabled = data.isDropGold;
+
+        ProjectileImpact_Push is_Push =
+           (ProjectileImpact_Push)GetImpactByTypeName(typeof(ProjectileImpact_Push).Name);
+        if (is_Push != null) is_Push.enabled = data.isPush;
+
         movement.Setup();
     }
 
@@ -111,6 +121,15 @@ public class ProjectileControl : MonoBehaviour
         impact.position = trans.position;
         impact.GetComponent<ImpactControl>().Setup(data.impactPoolName);
         
+    }
+
+    private ProjectileImpact GetImpactByTypeName(string name)
+    {
+        foreach(var i in impact)
+        {
+            if (i.GetType().Name == name) return i;
+        }
+        return null;
     }
 
 

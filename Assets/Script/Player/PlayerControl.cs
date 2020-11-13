@@ -44,7 +44,7 @@ public class PlayerControl : MonoBehaviour
     private float spaceBetweenProjectile = 0.1f;
     [SerializeField]
     private float speed = 1f;
-    private float currentSpeed;
+    public float currentSpeed;
     private Coroutine slowDownCoroutine;
 
     public int FireRate { get { return fireRate; } set { fireRate = value; } }
@@ -209,6 +209,8 @@ public class PlayerControl : MonoBehaviour
             data.toPos = p;
             data.toPosTime = 0.1f;
             data.projectileSprite = currentProjectile;
+            data.isDropGold = false;
+            data.isPush = false;
             pj.GetComponent<ProjectileControl>().Setup(data);
         }
         

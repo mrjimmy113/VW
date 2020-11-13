@@ -23,9 +23,9 @@ public class EnemyExtraBehavior_17 : EnemyExtraBehavior
         infor.coinAmount = 0;
         for (int i = 0; i < numberOfSpawnOnDead; i++)
         {
-            Transform obj = Instantiate(prefab, null);
-            obj.position = transform.position;
-            obj.GetComponent<EnemyControl>().Setup(infor, true, false);
+            EnemyControl enemyControl = EnemyFactory.instance.CreateEnemy(prefab.gameObject);
+            enemyControl.transform.position = transform.position;
+            enemyControl.Setup(infor, true, false);
         }
 
         base.OnDead(param);
