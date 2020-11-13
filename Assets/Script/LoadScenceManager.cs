@@ -43,14 +43,14 @@ public class LoadScenceManager : Singleton<LoadScenceManager>
     {
         yield return new WaitForSecondsRealtime(0.2f);
 
-        UIManager.ShowUiElement("LoadingView");
+        
 
 
 
 
         LoadingView loadView = null;
-        loadView =(LoadingView) UIManager.GetVisibleUIElements()[0].GetComponentInChildren<BaseView>();
-        loadView.ShowView(null, null);
+        loadView =(LoadingView) MyDoozyUIHelper.ShowView(DooName.LOADING_VIEW);
+        
 
         
 
@@ -76,9 +76,9 @@ public class LoadScenceManager : Singleton<LoadScenceManager>
         yield return new WaitForSecondsRealtime(1);
         callBack?.Invoke();
         OnLoadScenceByNameComplete?.Invoke(sceneName);
-        UIManager.HideUiElement("LoadingView");
-        UIManager.ShowUiElement("HomeView");
-        UIManager.GetVisibleUIElements()[0].GetComponentInChildren<BaseView>().ShowView(null, null);
+
+        MyDoozyUIHelper.HideAllElementInCategory(DooName.MASTER_VIEW);
+        MyDoozyUIHelper.ShowView(DooName.HOME_VIEW);
         
 
 

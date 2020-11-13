@@ -14,50 +14,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DatabaseUIElements:
     categories:
-    - categoryName: Example 1 - SimpleScene
-      itemNames:
-      - MainMenu
-      - Menu 1
-      - Menu 2
-      - Menu 3
-      isExpanded:
-        m_Target: 0
-        speed: 2
-        m_Value: 0
-    - categoryName: Example 2 - OrientationManager
-      itemNames:
-      - MainMenu
-      - SecondMenu
-      isExpanded:
-        m_Target: 0
-        speed: 2
-        m_Value: 0
-    - categoryName: Example 3 - Buttons
-      itemNames:
-      - 1
-      - 2
-      - 3
-      isExpanded:
-        m_Target: 0
-        speed: 2
-        m_Value: 0
-    - categoryName: Example 4 - Simple UI
-      itemNames:
-      - LeftMenu
-      - LoseMenu
-      - MainMenu
-      - PlayMenu
-      - StartMenu
-      - WinMenu
-      isExpanded:
-        m_Target: 0
-        speed: 2
-        m_Value: 0
-    - categoryName: HomeView
+    - categoryName: HomeViewDownPanel
       itemNames:
       - CoinUpgrade
       - GunUpgrade
       - PlayerUpgrade
+      isExpanded:
+        m_Target: 0
+        speed: 2
+        m_Value: 0
+    - categoryName: MasterElement
+      itemNames:
+      - HomeView
+      - IngameView
+      - LoadingView
       isExpanded:
         m_Target: 1
         speed: 2
@@ -65,28 +35,14 @@ MonoBehaviour:
     - categoryName: Uncategorized
       itemNames:
       - ~Element Name~
-      - EndGame
-      - GameOver
-      - GameOver_Video
-      - LoadingView
-      - Refund
-      - Shop
-      - StartScreen
-      - TapToContinue
-      - UnlockCar
-      - Victory
-      - Warning
       isExpanded:
-        m_Target: 0
+        m_Target: 1
         speed: 2
-        m_Value: 0
+        m_Value: 1
     categoryNames:
     - ~Custom Name~
-    - Example 1 - SimpleScene
-    - Example 2 - OrientationManager
-    - Example 3 - Buttons
-    - Example 4 - Simple UI
-    - HomeView
+    - HomeViewDownPanel
+    - MasterElement
     - Uncategorized
   DatabaseUIButtons:
     categories:

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using DoozyUI;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,25 +13,25 @@ public class DownPanelExtendControl : MonoBehaviour
         for (int i = 0; i < itemControls.Count; i++)
         {
             itemControls[i].Setup();
-            itemControls[i].gameObject.SetActive(false);
+            
             buttons[i].self.sprite = buttons[i].normal;
         }
     }
 
-    public void Open(int index)
+    public void Open(int index, string viewName)
     {
+        
         HideAll();
-        itemControls[index].gameObject.SetActive(true);
+        UIManager.ShowUiElement(viewName, DooName.HOME_VIEW_DOWN_PANEL);
         buttons[index].self.sprite = buttons[index].selected;
     }
 
     public void HideAll()
     {
-        for (int i = 0; i < itemControls.Count; i++)
+        MyDoozyUIHelper.HideAllElementInCategory(DooName.HOME_VIEW_DOWN_PANEL);
+        for(int i = 0; i< itemControls.Count;i++)
         {
-            itemControls[i].gameObject.SetActive(false);
             buttons[i].self.sprite = buttons[i].normal;
         }
- 
     }
 }

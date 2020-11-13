@@ -339,7 +339,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abb5c4702c7d6e344b9832a97ae1264d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  elementCategory: ~Custom Name~
+  elementCategory: MasterElement
   elementName: IngameView
   LANDSCAPE: 1
   PORTRAIT: 1
@@ -2120,7 +2120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abb5c4702c7d6e344b9832a97ae1264d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  elementCategory: ~Custom Name~
+  elementCategory: MasterElement
   elementName: HomeView
   LANDSCAPE: 1
   PORTRAIT: 1
@@ -2516,8 +2516,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abb5c4702c7d6e344b9832a97ae1264d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  elementCategory: HomeView
-  elementName: PlayerUpgrade
+  elementCategory: HomeViewDownPanel
+  elementName: GunUpgrade
   LANDSCAPE: 1
   PORTRAIT: 1
   startHidden: 1
@@ -3178,7 +3178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abb5c4702c7d6e344b9832a97ae1264d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  elementCategory: ~Custom Name~
+  elementCategory: MasterElement
   elementName: LoadingView
   LANDSCAPE: 1
   PORTRAIT: 1
@@ -6942,7 +6942,7 @@ MonoBehaviour:
   buttonName: ~Button Name~
   allowMultipleClicks: 0
   deselectButtonOnClick: 1
-  disableButtonInterval: 0.4
+  disableButtonInterval: 0
   useOnPointerEnter: 0
   onPointerEnterDisableInterval: 0.4
   onPointerEnterSound: ~No Sound~
@@ -9457,18 +9457,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6587208553353595908}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7924742044526398392}
-        m_MethodName: OpenPanel
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!222 &3855754600156757134
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9811,8 +9800,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abb5c4702c7d6e344b9832a97ae1264d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  elementCategory: HomeView
-  elementName: CoinUpgrade
+  elementCategory: HomeViewDownPanel
+  elementName: PlayerUpgrade
   LANDSCAPE: 1
   PORTRAIT: 1
   startHidden: 1
@@ -13349,8 +13338,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abb5c4702c7d6e344b9832a97ae1264d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  elementCategory: HomeView
-  elementName: GunUpgrade
+  elementCategory: HomeViewDownPanel
+  elementName: CoinUpgrade
   LANDSCAPE: 1
   PORTRAIT: 1
   startHidden: 1
@@ -14545,7 +14534,7 @@ MonoBehaviour:
   buttonName: ~Button Name~
   allowMultipleClicks: 0
   deselectButtonOnClick: 1
-  disableButtonInterval: 0.4
+  disableButtonInterval: 0
   useOnPointerEnter: 0
   onPointerEnterDisableInterval: 0.4
   onPointerEnterSound: ~No Sound~
@@ -15737,18 +15726,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6587208553353595915}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7924742044526398392}
-        m_MethodName: OpenPanel
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!222 &6077384624235624983
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -16108,18 +16086,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6587208553353595910}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7924742044526398392}
-        m_MethodName: OpenPanel
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &6587208553353595910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16628,7 +16595,7 @@ MonoBehaviour:
   buttonName: ~Button Name~
   allowMultipleClicks: 0
   deselectButtonOnClick: 1
-  disableButtonInterval: 0.4
+  disableButtonInterval: 0
   useOnPointerEnter: 0
   onPointerEnterDisableInterval: 0.4
   onPointerEnterSound: ~No Sound~
@@ -17767,6 +17734,9 @@ MonoBehaviour:
   txtNextLevel: {fileID: 4424172180239306211}
   imgEnergy: {fileID: 9054934939997577442}
   txtEnergyProgress: {fileID: 4424172179242687013}
+  btnUpgradePlayer: {fileID: 6587208553353595909}
+  btnUpgradeGun: {fileID: 3853516359153770969}
+  btnUpgradeCoin: {fileID: 6002305864782293229}
 --- !u!224 &8011075783702602471
 RectTransform:
   m_ObjectHideFlags: 0

@@ -24,6 +24,12 @@ public class HomeView : BaseView
 
     private bool isSetupOneTime = true;
 
+    public Button btnUpgradePlayer;
+    public Button btnUpgradeGun;
+    public Button btnUpgradeCoin;
+
+    private bool isDownPanelOpen = false;
+
     private void OnEnable()
     {
         downPanelExtendControl = GetComponentInChildren<DownPanelExtendControl>();
@@ -52,7 +58,7 @@ public class HomeView : BaseView
         txtCurrentLevel.text = currentLevel + "";
         txtNextLevel.text = currentLevel + 1 + "";
         downPanelExtendControl.Setup();
-        InputManager.instance.OnControlDownWithOutParam += ClosePanel;
+        
         
         
 
@@ -64,6 +70,23 @@ public class HomeView : BaseView
             DataAPIController.instance.RegisterEvent(DataPath.GOLD, OnGoldChange);
             DataAPIController.instance.RegisterEvent(DataPath.ENERGY, OnEnergyChange);
             ResourcesGainHandler.instance.EnergyEarnedHandler += EnergyProgress;
+
+            btnUpgradePlayer.onClick.AddListener(() =>
+            {
+                OpenPanel(0, DooName.PLAYER_UPGRADE);
+            });
+
+
+            btnUpgradeGun.onClick.AddListener(() =>
+            {
+                OpenPanel(1, DooName.GUN_UPGRADE);
+            });
+
+
+            btnUpgradeCoin.onClick.AddListener(() =>
+            {
+                OpenPanel(2, DooName.COIN_UPGRADE);
+            });
         }
         
     }
@@ -97,35 +120,34 @@ public class HomeView : BaseView
 
     public override void OnHideView()
     {
-        InputManager.instance.OnControlDownWithOutParam -= ClosePanel;
+        
         base.OnShowView();
         
     }
 
-    public void OpenPanel(int index)
+    public void OpenPanel(int index, string viewName)
     {
-        downPanelExtendControl.Open(index);
+        downPanelExtendControl.Open(index, viewName);
         playerControl.OnPanelOpen();
-        MissionManager.instance.isDownPanelOpen = true;
+        isDownPanelOpen = true;
+        
     }
 
     public void ClosePanel()
     {
-        if(!MissionManager.instance.isStartMission)
-        {
-            downPanelExtendControl.HideAll();
-            playerControl.OnPanelClose();
-            
-        }else
-        {
-            InputManager.instance.OnControlDownWithOutParam -= ClosePanel;
-        }
-        MissionManager.instance.isDownPanelOpen = false;
+        downPanelExtendControl.HideAll();
+        playerControl.OnPanelClose();
+        isDownPanelOpen = false;
     }
 
     public void StartGame()
     {
+        if (isDownPanelOpen)
+        {
+            Debug.Log("XXX");
+            ClosePanel();
+        }
+        else MissionManager.instance.StartMission();
         
-        MissionManager.instance.StartMission();
     }  
 }

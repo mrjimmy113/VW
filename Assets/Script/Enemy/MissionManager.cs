@@ -89,7 +89,6 @@ public class MissionManager : Singleton<MissionManager>
     public int currentMission = 0;
 
     public bool isStartMission = false;
-    public bool isDownPanelOpen = false;
 
     private void Awake()
     {
@@ -134,7 +133,7 @@ public class MissionManager : Singleton<MissionManager>
     {
         int currentEnergy = DataAPIController.instance.GetCurrentEnergy();
         
-        if(currentEnergy >= 5 && !isDownPanelOpen)
+        if(currentEnergy >= 5)
         {
             OnMissionStart?.Invoke();
             StartCoroutine(StartWave());
@@ -142,11 +141,10 @@ public class MissionManager : Singleton<MissionManager>
             ConfigPlayerCoinValueRecord coinValueCf = ConfigurationManager.instance.playerCoinValue.GetRecordByKeySearch(DataAPIController.instance.GetCurrentGoldValueLevel());
             goldValue = coinValueCf.Value;
             isStartMission = true;
+
+            MyDoozyUIHelper.HideAllElementInCategory(DooName.MASTER_VIEW);
+            MyDoozyUIHelper.ShowView(DooName.INGAME_VIEW);
             
-            
-            UIManager.HideUiElement("HomeView");
-            UIManager.ShowUiElement("IngameView");
-            UIManager.GetVisibleUIElements()[0].GetComponentInChildren<BaseView>().ShowView(null, null);
         }
         else
         {

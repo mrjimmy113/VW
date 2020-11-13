@@ -6,11 +6,11 @@ using UnityEngine;
 public class ConfigProjectileBuffRecord
 {
     [SerializeField]
-    private int id;
+    private int id = 0;
     [SerializeField]
-    private string idSequences;
+    private string idSequences = "";
     [SerializeField]
-    private string sprite;
+    private string sprite = "";
 
     public List<int> IdSequences { get => MyUltis.StringToIntegerList(idSequences);}
     public string Sprite { get => sprite;}

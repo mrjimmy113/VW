@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class SupportControl : MonoBehaviour
 {
-    private PlayerControl playerControl;
+    private PlayerControl playerControl = null;
     [SerializeField]
-    private Transform projectile;
+    private Transform projectile = null;
     [SerializeField]
-    private Transform impact;
+    private Transform impact = null;
 
     [SerializeField]
     private float distanceToPlayer = 1f;

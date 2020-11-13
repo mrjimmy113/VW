@@ -142,7 +142,8 @@ public class IngameView : BaseView
 
         LoadScenceManager.instance.LoadScenceByNameInstant("Buffer", () =>
         {
-            UIManager.HideUiElement("IngameView");
+            MyDoozyUIHelper.HideAllElementInCategory(DooName.MASTER_VIEW);
+            MyDoozyUIHelper.ShowView(DooName.HOME_VIEW);
         });
     }
 }
