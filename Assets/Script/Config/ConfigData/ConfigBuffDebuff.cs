@@ -6,23 +6,23 @@ using System;
 public class ConfigBuffDebuffRecord
 {
     [SerializeField]
-    private int id;
+    private int id = 0;
     [SerializeField]
-    private string prefab;
+    private string prefab = "";
     [SerializeField]
-    private string sprite;
+    private string sprite = "";
     [SerializeField]
-    private int value;
+    private int value = 0;
     [SerializeField]
-    private int isBuff;
+    private int isBuff = 0;
     [SerializeField]
-    private string fieldName;
+    private string fieldName = "";
     [SerializeField]
-    private float effectTime;
+    private float effectTime = 0;
     [SerializeField]
-    private int isChangeProjectile;
+    private int isChangeProjectile = 0; 
     [SerializeField]
-    private int isEnemy;
+    private int isEnemy = 0;
 
     public int Id { get => id;}
     public string Prefab { get => prefab;}

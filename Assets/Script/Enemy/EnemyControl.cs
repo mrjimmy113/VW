@@ -30,16 +30,16 @@ public class EnemyControl : MonoBehaviour
     [SerializeField]
     public CircleCollider2D col = null;
     [SerializeField]
-    private Transform kind_1;
+    private Transform kind_1 = null;
     [SerializeField]
-    private Transform kind_2;
+    private Transform kind_2 = null;
     [SerializeField]
-    public Transform model;
+    public Transform model = null;
     [SerializeField]
-    public Transform deadAnim;
+    public Transform deadAnim = null;
 
-    private Tween rotateTwin1;
-    private Tween rotateTwin2;
+    private Tween rotateTwin1 = null;
+    private Tween rotateTwin2 = null;
 
     [Header("Enemy Stat")]
     public EnemyInfor inforEnemy;

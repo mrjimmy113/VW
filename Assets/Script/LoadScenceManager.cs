@@ -43,13 +43,16 @@ public class LoadScenceManager : Singleton<LoadScenceManager>
     {
         yield return new WaitForSecondsRealtime(0.2f);
 
-        LoadingView loadView = null;
-        ViewManager.instance.OnSwitchView(ViewIndex.LoadingView, null, (view) =>
-        {
-            loadView = (LoadingView)view;
-        });
+        UIManager.ShowUiElement("LoadingView");
 
-        yield return new WaitUntil(() => loadView != null);
+
+
+
+        LoadingView loadView = null;
+        loadView =(LoadingView) UIManager.GetVisibleUIElements()[0].GetComponentInChildren<BaseView>();
+        loadView.ShowView(null, null);
+
+        
 
         AsyncOperation async = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);
 
@@ -73,8 +76,11 @@ public class LoadScenceManager : Singleton<LoadScenceManager>
         yield return new WaitForSecondsRealtime(1);
         callBack?.Invoke();
         OnLoadScenceByNameComplete?.Invoke(sceneName);
+        UIManager.HideUiElement("LoadingView");
+        UIManager.ShowUiElement("HomeView");
+        UIManager.GetVisibleUIElements()[0].GetComponentInChildren<BaseView>().ShowView(null, null);
         
-        
+
 
     }
 
@@ -84,8 +90,8 @@ public class LoadScenceManager : Singleton<LoadScenceManager>
         yield return new WaitUntil(() => async.isDone);
         callBack?.Invoke();
         OnLoadScenceByNameComplete?.Invoke(sceneName);
-
-
+        UIManager.ShowUiElement("HomeView");
+        UIManager.GetVisibleUIElements()[0].GetComponentInChildren<BaseView>().ShowView(null, null);
 
     }
 

@@ -14,6 +14,7 @@ public class HomeView : BaseView
     public Text txtNextLevel;
     public Image imgEnergy;
     public Text txtEnergyProgress;
+    
 
     private DownPanelExtendControl downPanelExtendControl;
     public event Action OpenPanelEvent;
@@ -122,5 +123,9 @@ public class HomeView : BaseView
         MissionManager.instance.isDownPanelOpen = false;
     }
 
-   
+    public void StartGame()
+    {
+        
+        MissionManager.instance.StartMission();
+    }  
 }

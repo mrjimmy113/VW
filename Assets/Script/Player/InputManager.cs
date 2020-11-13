@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DoozyUI;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,16 +16,20 @@ public class InputManager : Singleton<InputManager>
     private EventSystem eventSystem;
 
     private bool isTouch = false;
+    private bool checkUI = true;
 
     private void Start()
     {
         eventSystem = FindObjectOfType<EventSystem>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonDown(0) && !eventSystem.IsPointerOverGameObject())
+        
+        
+        if (Input.GetMouseButtonDown(0))
         {
             OnControlDown?.Invoke(Input.mousePosition);
             OnControlDownWithOutParam?.Invoke();
@@ -32,7 +37,7 @@ public class InputManager : Singleton<InputManager>
 
         }
         
-        if(Input.GetMouseButton(0) && !eventSystem.IsPointerOverGameObject())
+        if(Input.GetMouseButton(0))
         {
             OnControlOnDown?.Invoke(Input.mousePosition);
            
@@ -41,9 +46,11 @@ public class InputManager : Singleton<InputManager>
 
         
 
-        if(Input.GetMouseButtonUp(0) && !eventSystem.IsPointerOverGameObject())
+        if(Input.GetMouseButtonUp(0))
         {
             OnControlUp?.Invoke(Input.mousePosition);
         }
     }
+
+ 
 }

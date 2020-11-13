@@ -12,4 +12,84 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12aff6d82c644064db90d92a7605c9e2, type: 3}
   m_Name: ConfigWave
   m_EditorClassIdentifier: 
-  records: []
+  records:
+  - id: 1
+    timeDelayOnEachSpawn: 1
+    timeDelayToSpawn: 1
+    enemyIds: 1
+    numbers: 5
+  - id: 2
+    timeDelayOnEachSpawn: 1
+    timeDelayToSpawn: 1
+    enemyIds: 1;2;2
+    numbers: 4;4;4
+  - id: 3
+    timeDelayOnEachSpawn: 1
+    timeDelayToSpawn: 1
+    enemyIds: 1;2;3
+    numbers: 5;5;5
+  - id: 4
+    timeDelayOnEachSpawn: 1
+    timeDelayToSpawn: 1
+    enemyIds: 9
+    numbers: 1
+  - id: 5
+    timeDelayOnEachSpawn: 1
+    timeDelayToSpawn: 1
+    enemyIds: 10;1
+    numbers: 1;5
+  - id: 6
+    timeDelayOnEachSpawn: 1
+    timeDelayToSpawn: 1
+    enemyIds: 11
+    numbers: 3
+  - id: 7
+    timeDelayOnEachSpawn: 1
+    timeDelayToSpawn: 1
+    enemyIds: 12;1
+    numbers: 1;10
+  - id: 8
+    timeDelayOnEachSpawn: 1
+    timeDelayToSpawn: 1
+    enemyIds: 13
+    numbers: 3
+  - id: 9
+    timeDelayOnEachSpawn: 1
+    timeDelayToSpawn: 1
+    enemyIds: 14
+    numbers: 3
+  - id: 10
+    timeDelayOnEachSpawn: 1
+    timeDelayToSpawn: 1
+    enemyIds: 15
+    numbers: 1
+  - id: 11
+    timeDelayOnEachSpawn: 1
+    timeDelayToSpawn: 1
+    enemyIds: 16;4
+    numbers: 1;2
+  - id: 12
+    timeDelayOnEachSpawn: 1
+    timeDelayToSpawn: 1
+    enemyIds: 17
+    numbers: 3
+  - id: 13
+    timeDelayOnEachSpawn: 1
+    timeDelayToSpawn: 1
+    enemyIds: 18
+    numbers: 3
+  - id: 14
+    timeDelayOnEachSpawn: 1
+    timeDelayToSpawn: 1
+    enemyIds: 19
+    numbers: 3
+  - id: 15
+    timeDelayOnEachSpawn: 1
+    timeDelayToSpawn: 1
+    enemyIds: 20
+    numbers: 3
+  - id: 16
+    timeDelayOnEachSpawn: 1
+    timeDelayToSpawn: 1
+    enemyIds: 21
+    numbers: 3

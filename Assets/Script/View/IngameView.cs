@@ -1,4 +1,5 @@
 ﻿using DG.Tweening;
+using DoozyUI;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -138,13 +139,10 @@ public class IngameView : BaseView
 
     public void Confirm()
     {
-        ViewManager.instance.OnSwitchView(ViewIndex.EmptyView,null,(v) => {
 
-            LoadScenceManager.instance.LoadScenceByNameInstant("Buffer", () =>
-            {
-
-            });
+        LoadScenceManager.instance.LoadScenceByNameInstant("Buffer", () =>
+        {
+            UIManager.HideUiElement("IngameView");
         });
-      
     }
 }

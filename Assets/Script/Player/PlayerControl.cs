@@ -286,7 +286,7 @@ public class PlayerControl : MonoBehaviour
 
     private void EndAnim()
     {
-        trans.DOMoveY(6, 1f);
+        trans.DOMoveY(10, 1f);
     }
 
     private void StartAnim()

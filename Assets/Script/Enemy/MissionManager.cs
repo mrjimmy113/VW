@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DoozyUI;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -123,7 +124,7 @@ public class MissionManager : Singleton<MissionManager>
             waves[i] = infor;
         }
         waveIndex = -1;
-        InputManager.instance.OnControlDownWithOutParam += StartMission;
+        
         playerControl = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControl>();
         playerControl.OnPlayerDead += LoseGame;
 
@@ -141,9 +142,13 @@ public class MissionManager : Singleton<MissionManager>
             ConfigPlayerCoinValueRecord coinValueCf = ConfigurationManager.instance.playerCoinValue.GetRecordByKeySearch(DataAPIController.instance.GetCurrentGoldValueLevel());
             goldValue = coinValueCf.Value;
             isStartMission = true;
-            ViewManager.instance.OnSwitchView(ViewIndex.IngameView);
-            InputManager.instance.OnControlDownWithOutParam -= StartMission;
-        }else
+            
+            
+            UIManager.HideUiElement("HomeView");
+            UIManager.ShowUiElement("IngameView");
+            UIManager.GetVisibleUIElements()[0].GetComponentInChildren<BaseView>().ShowView(null, null);
+        }
+        else
         {
             //
         }
