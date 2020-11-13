@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using DoozyUI;
 
 public class LoadScenceManager : Singleton<LoadScenceManager>
 {
@@ -41,6 +42,7 @@ public class LoadScenceManager : Singleton<LoadScenceManager>
     IEnumerator LoadByName(string sceneName, Action callBack)
     {
         yield return new WaitForSecondsRealtime(0.2f);
+
         LoadingView loadView = null;
         ViewManager.instance.OnSwitchView(ViewIndex.LoadingView, null, (view) =>
         {

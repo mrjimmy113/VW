@@ -59,6 +59,7 @@ MonoBehaviour:
       - EndGame
       - GameOver
       - GameOver_Video
+      - LoadingView
       - Refund
       - Shop
       - StartScreen
@@ -117,12 +118,20 @@ MonoBehaviour:
         m_Target: 0
         speed: 2
         m_Value: 0
+    - categoryName: Uncategorized
+      itemNames:
+      - ~Button Name~
+      isExpanded:
+        m_Target: 0
+        speed: 2
+        m_Value: 0
     categoryNames:
     - ~Custom Name~
     - Example 1 - SimpleScene
     - Example 2 - OrientationManager
     - Example 3 - Buttons
     - Example 4 - Simple UI
+    - Uncategorized
   DatabaseUICanvases:
   - MasterCanvas
   DatabaseUISounds:
