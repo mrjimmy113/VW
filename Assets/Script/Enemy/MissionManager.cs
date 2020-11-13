@@ -215,14 +215,18 @@ public class MissionManager : Singleton<MissionManager>
         while(true)
         {
             yield return new WaitForSecondsRealtime(0.5f);
+            Debug.Log("Check End Game");
             if (EnemyFactory.instance.activeEnemy.Count == 0)
             {
                 Time.timeScale = 1f;
                 OnMissionClearEvent?.Invoke();
+                OnGameEnd?.Invoke(true);
+                Debug.Log("End Game");
                 if (!isLastMission)
                 {
                     int unlockGunId =  DataAPIController.instance.UpdateCurrentMission();
-                    OnGameEnd?.Invoke(true);
+                    
+                    
                     DataAPIController.instance.AddGold(goldEarned);
                     if(unlockGunId != 0)
                     {

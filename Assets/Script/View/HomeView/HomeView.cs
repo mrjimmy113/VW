@@ -144,7 +144,6 @@ public class HomeView : BaseView
     {
         if (isDownPanelOpen)
         {
-            Debug.Log("XXX");
             ClosePanel();
         }
         else MissionManager.instance.StartMission();

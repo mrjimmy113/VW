@@ -215,7 +215,7 @@ MonoBehaviour:
   impact: {fileID: 2239385878889959965, guid: 83caba5652c141848acabf3f8066af40, type: 3}
   distanceToPlayer: 1
   speed: 5
-  spaceBetweenProjectile: 0.1
+  spaceBetweenProjectile: 0.2
   muzzle: {fileID: 1312568792583274966}
   forwardPoint: {fileID: 8774292472885129637}
 --- !u!1 &1312568792583274953
