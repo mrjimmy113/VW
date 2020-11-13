@@ -173,9 +173,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1312568791837534434}
+  - component: {fileID: 615955753}
   m_Layer: 12
   m_Name: Support
-  m_TagString: Player
+  m_TagString: Support
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -197,6 +198,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &615955753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1312568791837534437}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86f4deb27ef96644cbf8a6cd9c0aa6c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectile: {fileID: 1612313471125145554, guid: 87009acceba4c184b96eca3cc1a7fefc,
+    type: 3}
+  impact: {fileID: 2239385878889959965, guid: 83caba5652c141848acabf3f8066af40, type: 3}
+  distanceToPlayer: 1
+  speed: 5
+  spaceBetweenProjectile: 0.1
+  muzzle: {fileID: 1312568792583274966}
+  forwardPoint: {fileID: 8774292472885129637}
 --- !u!1 &1312568792583274953
 GameObject:
   m_ObjectHideFlags: 0

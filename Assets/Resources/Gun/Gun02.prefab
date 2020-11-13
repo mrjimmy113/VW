@@ -360,6 +360,7 @@ MonoBehaviour:
   impact: {fileID: 6722832829475542904, guid: 80405dc9d845b3a41989662e535b0cc2, type: 3}
   muzzleRight: {fileID: 8238697777014215112}
   muzzleLeft: {fileID: 8930614032090145935}
+  extraSize: 1
 --- !u!1 &7382102401421093253
 GameObject:
   m_ObjectHideFlags: 0

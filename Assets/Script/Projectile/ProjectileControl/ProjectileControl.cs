@@ -14,6 +14,7 @@ public class ProjectileData
     public Sprite projectileSprite;
     public bool isPush = false;
     public bool isDropGold = false;
+    public float extraSize = 1;
     
 }
 
@@ -72,10 +73,18 @@ public class ProjectileControl : MonoBehaviour
         while(true)
         {
             yield return wait;
-            Debug.Log(gameObject.name);
             Collider2D[] cols = detect.DetectEnemy(trans.position);
             foreach(var i in impact)
             {
+                if(!data.isDropGold)
+                {
+                    if(i.GetType().Name == typeof(ProjectileImpact_Drop_Coin).Name) continue; 
+
+                }
+                if(!data.isPush)
+                {
+                    if (i.GetType().Name == typeof(ProjectileImpact_Push).Name) continue;
+                }
                 i.OnImpact(cols);
             }
             if (cols.Length > 0)
@@ -98,13 +107,7 @@ public class ProjectileControl : MonoBehaviour
         this.data = data;
         if (data.projectileSprite != null) rd.sprite = data.projectileSprite;
 
-        ProjectileImpact_Drop_Coin drop_Coin = 
-           (ProjectileImpact_Drop_Coin) GetImpactByTypeName(typeof(ProjectileImpact_Drop_Coin).Name);
-        if (drop_Coin != null) drop_Coin.enabled = data.isDropGold;
-
-        ProjectileImpact_Push is_Push =
-           (ProjectileImpact_Push)GetImpactByTypeName(typeof(ProjectileImpact_Push).Name);
-        if (is_Push != null) is_Push.enabled = data.isPush;
+       
 
         movement.Setup();
     }
@@ -123,14 +126,7 @@ public class ProjectileControl : MonoBehaviour
         
     }
 
-    private ProjectileImpact GetImpactByTypeName(string name)
-    {
-        foreach(var i in impact)
-        {
-            if (i.GetType().Name == name) return i;
-        }
-        return null;
-    }
+   
 
 
 }

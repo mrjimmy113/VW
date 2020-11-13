@@ -4,13 +4,21 @@ using UnityEngine;
 
 public class BuffDebuff_CallSupport : BuffDebuff
 {
-    public override void AfterEffect(EffectData data)
-    {
-        
-    }
-
     public override EffectData OnEffect()
     {
-        return null;
+        
+        EffectData data = new EffectData();
+        SupportControl support = GameObject.FindGameObjectWithTag("Support").GetComponent<SupportControl>();
+        support.Summon();
+
+
+
+        return data;
+    }
+
+    public override void AfterEffect(EffectData data)
+    {
+        SupportControl support = GameObject.FindGameObjectWithTag("Support").GetComponent<SupportControl>();
+        support.BeGone();
     }
 }

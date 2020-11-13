@@ -505,6 +505,7 @@ MonoBehaviour:
   impact: {fileID: 2239385878889959965, guid: 83caba5652c141848acabf3f8066af40, type: 3}
   muzzleRight: {fileID: 8238697777014215112}
   muzzleLeft: {fileID: 8930614032090145935}
+  extraSize: 1
 --- !u!114 &5291996964279160883
 MonoBehaviour:
   m_ObjectHideFlags: 0

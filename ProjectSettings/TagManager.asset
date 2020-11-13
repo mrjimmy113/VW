@@ -12,6 +12,7 @@ TagManager:
   - Healer
   - Pusher
   - Leecher
+  - Support
   layers:
   - Default
   - TransparentFX

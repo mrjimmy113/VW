@@ -18,6 +18,7 @@ public class Gun_01_Behavior : WeaponBehavior
         data.projectilePoolName = projectile.name;
         data.impactPoolName = impact.name;
         data.isRight = !isLeft;
+        pj.localScale = Vector2.one * extraSize;
         pj.GetComponent<ProjectileControl>().Setup(data);
         OnFireEvent?.Invoke(isLeft);
     }

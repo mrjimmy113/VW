@@ -46,6 +46,9 @@ public class PlayerControl : MonoBehaviour
     private float speed = 1f;
     public float currentSpeed;
     private Coroutine slowDownCoroutine;
+    private bool isDropGold = false;
+    private bool isPush = false;
+
 
     public int FireRate { get { return fireRate; } set { fireRate = value; } }
 
@@ -55,8 +58,12 @@ public class PlayerControl : MonoBehaviour
 
     public float CurrentSpeed { get => currentSpeed; set => currentSpeed = value; }
 
+    public bool IsDropGold { get => isDropGold; set => isDropGold = value; }
+    public bool IsPush { get => isPush; set => isPush = value; }
+
 
     private bool isFire = false;
+    public event Action OnFire;
 
     
 
@@ -151,6 +158,7 @@ public class PlayerControl : MonoBehaviour
         if(timeAttack >= rof && isFire)
         {
             Fire();
+            OnFire?.Invoke();
             timeAttack = 0;
         }
 
@@ -201,19 +209,26 @@ public class PlayerControl : MonoBehaviour
         {
             Transform pj = PoolManager.instance.dicPool[projectile.name].Spwan();
             pj.position = muzzle.position;
-
-            ProjectileData data = new ProjectileData();
-            data.damage = damage;
-            data.projectilePoolName = projectile.name;
-            data.impactPoolName = impact.name;
+            ProjectileData data = GetProjectileData();
             data.toPos = p;
-            data.toPosTime = 0.1f;
-            data.projectileSprite = currentProjectile;
-            data.isDropGold = false;
-            data.isPush = false;
             pj.GetComponent<ProjectileControl>().Setup(data);
         }
         
+    }
+
+    public ProjectileData GetProjectileData()
+    {
+        ProjectileData data = new ProjectileData();
+        data.damage = damage;
+        data.projectilePoolName = projectile.name;
+        data.impactPoolName = impact.name;
+        
+        data.toPosTime = 0.1f;
+        data.projectileSprite = currentProjectile;
+        data.isDropGold = isDropGold;
+        data.isPush = isPush;
+
+        return data;
     }
 
     private void OnControlUp(Vector2 obj)
@@ -309,6 +324,11 @@ public class PlayerControl : MonoBehaviour
         currentSpeed = modifySpeed;
         yield return new WaitForSeconds(0.5f);
         currentSpeed = oldSpeed;
+    }
+
+    public void AddExtraWeaponSize(float n)
+    {
+        weaponControl.SetExtraSize(n);
     }
 
 }

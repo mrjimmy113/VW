@@ -27,5 +27,11 @@ public class WeaponControl : MonoBehaviour
         }
     }
 
+    public void SetExtraSize(float extraSize)
+    {
+        
+        currentWeapon.extraSize += extraSize;
+    }
+
 
 }

@@ -12,6 +12,7 @@ public abstract class WeaponBehavior : MonoBehaviour
     public Transform muzzleRight;
     public Transform muzzleLeft;
     private bool isRightMuzzle = false;
+    public float extraSize = 1;
 
     private void OnEnable()
     {
