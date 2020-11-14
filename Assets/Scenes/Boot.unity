@@ -442,8 +442,8 @@ MonoBehaviour:
   OnInAnimationsFinish:
     m_PersistentCalls:
       m_Calls: []
-  inAnimationsPresetCategoryName: Basic
-  inAnimationsPresetName: FastFadeIn
+  inAnimationsPresetCategoryName: Fade
+  inAnimationsPresetName: InFast
   loadInAnimationsPresetAtRuntime: 1
   inAnimationsSoundAtStart: ~No Sound~
   customInAnimationsSoundAtStart: 0
@@ -531,8 +531,8 @@ MonoBehaviour:
   OnOutAnimationsFinish:
     m_PersistentCalls:
       m_Calls: []
-  outAnimationsPresetCategoryName: Basic
-  outAnimationsPresetName: FastFadeOut
+  outAnimationsPresetCategoryName: Fade
+  outAnimationsPresetName: OutFast
   loadOutAnimationsPresetAtRuntime: 1
   outAnimationsSoundAtStart: ~No Sound~
   customOutAnimationsSoundAtStart: 0
@@ -2223,8 +2223,8 @@ MonoBehaviour:
   OnInAnimationsFinish:
     m_PersistentCalls:
       m_Calls: []
-  inAnimationsPresetCategoryName: Basic
-  inAnimationsPresetName: FastFadeIn
+  inAnimationsPresetCategoryName: Fade
+  inAnimationsPresetName: InFast
   loadInAnimationsPresetAtRuntime: 1
   inAnimationsSoundAtStart: ~No Sound~
   customInAnimationsSoundAtStart: 0
@@ -2312,8 +2312,8 @@ MonoBehaviour:
   OnOutAnimationsFinish:
     m_PersistentCalls:
       m_Calls: []
-  outAnimationsPresetCategoryName: Basic
-  outAnimationsPresetName: FastFadeOut
+  outAnimationsPresetCategoryName: Fade
+  outAnimationsPresetName: OutFast
   loadOutAnimationsPresetAtRuntime: 1
   outAnimationsSoundAtStart: ~No Sound~
   customOutAnimationsSoundAtStart: 0
@@ -2453,6 +2453,18 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1087551432 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6131206298663611, guid: e00e327e8be4f0a49a7f9f2dd13983a8,
+    type: 3}
+  m_PrefabInstance: {fileID: 4424172180634883166}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1105848595
 GameObject:
   m_ObjectHideFlags: 0
@@ -2620,7 +2632,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   inAnimationsPresetCategoryName: Fade
-  inAnimationsPresetName: ShrinkIn
+  inAnimationsPresetName: InNormal
   loadInAnimationsPresetAtRuntime: 1
   inAnimationsSoundAtStart: ~No Sound~
   customInAnimationsSoundAtStart: 0
@@ -2709,7 +2721,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   outAnimationsPresetCategoryName: Fade
-  outAnimationsPresetName: GrowOut
+  outAnimationsPresetName: OutNormal
   loadOutAnimationsPresetAtRuntime: 1
   outAnimationsSoundAtStart: ~No Sound~
   customOutAnimationsSoundAtStart: 0
@@ -2939,6 +2951,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1315777676}
   m_CullTransparentMesh: 0
+--- !u!114 &1533033405 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6131206298663611, guid: 1e0e1ff019fa9e040a1e127463d3d476,
+    type: 3}
+  m_PrefabInstance: {fileID: 4424172178715158065}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1697550537
 GameObject:
   m_ObjectHideFlags: 0
@@ -3281,8 +3305,8 @@ MonoBehaviour:
   OnInAnimationsFinish:
     m_PersistentCalls:
       m_Calls: []
-  inAnimationsPresetCategoryName: Basic
-  inAnimationsPresetName: FastFadeIn
+  inAnimationsPresetCategoryName: Fade
+  inAnimationsPresetName: InFast
   loadInAnimationsPresetAtRuntime: 1
   inAnimationsSoundAtStart: ~No Sound~
   customInAnimationsSoundAtStart: 0
@@ -3370,8 +3394,8 @@ MonoBehaviour:
   OnOutAnimationsFinish:
     m_PersistentCalls:
       m_Calls: []
-  outAnimationsPresetCategoryName: Basic
-  outAnimationsPresetName: FastFadeOut
+  outAnimationsPresetCategoryName: Fade
+  outAnimationsPresetName: OutFast
   loadOutAnimationsPresetAtRuntime: 1
   outAnimationsSoundAtStart: ~No Sound~
   customOutAnimationsSoundAtStart: 0
@@ -9652,8 +9676,7 @@ PrefabInstance:
         type: 3}
       propertyPath: txtDownCoin
       value: 
-      objectReference: {fileID: 6131206704495814, guid: f2f28f1d0c119af4d825650a51b665a9,
-        type: 3}
+      objectReference: {fileID: 1533033405}
     - target: {fileID: 8183356594688598314, guid: 1e0e1ff019fa9e040a1e127463d3d476,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9904,7 +9927,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   inAnimationsPresetCategoryName: Fade
-  inAnimationsPresetName: ShrinkIn
+  inAnimationsPresetName: InNormal
   loadInAnimationsPresetAtRuntime: 1
   inAnimationsSoundAtStart: ~No Sound~
   customInAnimationsSoundAtStart: 0
@@ -9993,7 +10016,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   outAnimationsPresetCategoryName: Fade
-  outAnimationsPresetName: GrowOut
+  outAnimationsPresetName: OutNormal
   loadOutAnimationsPresetAtRuntime: 1
   outAnimationsSoundAtStart: ~No Sound~
   customOutAnimationsSoundAtStart: 0
@@ -13205,8 +13228,7 @@ PrefabInstance:
         type: 3}
       propertyPath: txtDownCoin
       value: 
-      objectReference: {fileID: 6131206462213801, guid: f2f28f1d0c119af4d825650a51b665a9,
-        type: 3}
+      objectReference: {fileID: 1087551432}
     - target: {fileID: 8183356594688598314, guid: e00e327e8be4f0a49a7f9f2dd13983a8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -13442,7 +13464,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   inAnimationsPresetCategoryName: Fade
-  inAnimationsPresetName: ShrinkIn
+  inAnimationsPresetName: InNormal
   loadInAnimationsPresetAtRuntime: 1
   inAnimationsSoundAtStart: ~No Sound~
   customInAnimationsSoundAtStart: 0
@@ -13531,7 +13553,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   outAnimationsPresetCategoryName: Fade
-  outAnimationsPresetName: GrowOut
+  outAnimationsPresetName: OutNormal
   loadOutAnimationsPresetAtRuntime: 1
   outAnimationsSoundAtStart: ~No Sound~
   customOutAnimationsSoundAtStart: 0

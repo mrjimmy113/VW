@@ -142,12 +142,17 @@ public class DataAPIController : Singleton<DataAPIController>
     public void AddEnergy(int amount)
     {
         int energy = GetCurrentEnergy();
-        if(energy < ResoucesConfig.ENERGY_CAPACITY)
+        if(energy + amount < ResoucesConfig.ENERGY_CAPACITY)
         {
             energy += amount;
-            dataModel.UpdateData(DataPath.ENERGY, energy);
+            
+        }else
+        {
+            energy = ResoucesConfig.ENERGY_CAPACITY;
         }
-     
+
+        dataModel.UpdateData(DataPath.ENERGY, energy);
+
     }
 
     public void SubstractEnergy(int amount)
@@ -252,9 +257,10 @@ public class DataAPIController : Singleton<DataAPIController>
             { key_1 = id, key_2 = gun.damageLevel + 1 });
         if (nextLevelConfig == null) return false;
         int gold = GetCurrentGold();
-
+        
         if (nextLevelConfig.UnlockFee <= gold)
         {
+        
             gold -= nextLevelConfig.UnlockFee;
             gun.rofLevel++;
             dataModel.UpdateData(DataPath.GOLD, gold);
