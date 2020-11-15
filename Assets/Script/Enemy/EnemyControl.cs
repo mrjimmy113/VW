@@ -10,6 +10,7 @@ public class OnEnemyDeadParam
     public int coinAmount;
     public bool isCountDead;
     public EnemyControl instance;
+    public int enemyType;
 }
 
 public class OnEnemyDamagedParam
@@ -370,6 +371,7 @@ public class EnemyControl : MonoBehaviour
         param.coinAmount = coinAmount;
         param.isCountDead = isCountOnDead;
         param.instance = this;
+        param.enemyType = inforEnemy.cf.EnemyTypeId;
         OnEnemyDead?.Invoke(param);
         model.gameObject.SetActive(false);
         deadAnim.gameObject.SetActive(true);

@@ -18,6 +18,7 @@ public class BootLoader : Singleton<BootLoader>
             DataAPIController.instance.OnInitData(() =>
             {
                 ResourcesGainHandler.instance.InitHandler();
+                DailyQuestControl.instance.InitQuest();
                 LoadScenceManager.instance.LoadSceneByname("Buffer", () =>
                 {
                     

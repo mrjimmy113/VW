@@ -1,0 +1,5 @@
+id,description,prefab,minRequire,maxRequire,minReward,maxReward
+1,Kill enemies,DailyQuest/Quest_KillEnemies,10,20,10,20
+2,Clear mission,DailyQuest/Quest_ClearMission,2,4,10,20
+3,Clear boss mission,DailyQuest/Quest_ClearBossMission,1,2,10,20
+4,Earn gold,DailyQuest/Quest_EarnGold,10,20,10,20

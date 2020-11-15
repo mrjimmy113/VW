@@ -9,11 +9,9 @@ public class HomeView : BaseView
     public Text txtGold;
     public Text txtEnergy;
     public Text txtDiamond;
-    public Text txtPreviousLevel;
-    public Text txtCurrentLevel;
-    public Text txtNextLevel;
     public Image imgEnergy;
     public Text txtEnergyProgress;
+    public LevelPanel levelPanel;
     
 
     private DownPanelExtendControl downPanelExtendControl;
@@ -54,11 +52,14 @@ public class HomeView : BaseView
 
         txtDiamond.text = DataAPIController.instance.GetCurrentDiamond().ToString();
         int currentLevel = MissionManager.instance.currentMission;
-        txtPreviousLevel.text = currentLevel - 1 + "";
-        txtCurrentLevel.text = currentLevel + "";
-        txtNextLevel.text = currentLevel + 1 + "";
+ 
+       
+
+
+
+
         downPanelExtendControl.Setup();
-        
+        levelPanel.Setup(currentLevel);
         
         
 

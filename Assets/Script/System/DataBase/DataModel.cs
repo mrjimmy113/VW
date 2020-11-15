@@ -70,6 +70,7 @@ public class DataModel : MonoBehaviour
         player.energyStartTime = time;
         
         player.goldDailySaved = 0;
+        player.quest = null;
 
         SaveData();
         

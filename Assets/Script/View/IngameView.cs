@@ -11,13 +11,11 @@ public class IngameView : BaseView
     public Image imgProgress;
     public Text txtProgress;
     public Text txtGold;
-    public Text txtPreviousLevel;
-    public Text txtCurrentLevel;
-    public Text txtNextLevel;
     public RectTransform buffDebuffPanel;
     public BuffDebuffItem buffDebuffItemPrefab;
     public CanvasGroup resultPanel;
     public Text txtGoldEarned;
+    public LevelPanel levelPanel;
 
 
     private List<BuffDebuffItem> buffDebuffItems = new List<BuffDebuffItem>();
@@ -32,9 +30,7 @@ public class IngameView : BaseView
         base.Setup(param);
 
         int currentLevel = MissionManager.instance.currentMission;
-        txtPreviousLevel.text = currentLevel - 1 + "";
-        txtCurrentLevel.text = currentLevel + "";
-        txtNextLevel.text = currentLevel + 1 + "";
+        levelPanel.Setup(currentLevel);
         UpdateProgress(0, 1);
         txtGold.text = 0 + "";
         resultPanel.blocksRaycasts = false;
@@ -59,6 +55,7 @@ public class IngameView : BaseView
 
         foreach(var bd in buffDebuffItems)
         {
+            bd.Reset();
             bd.gameObject.SetActive(false);
         }
 
@@ -75,7 +72,12 @@ public class IngameView : BaseView
     {
         foreach(var i in buffDebuffItems)
         {
-            if (i.id == id) i.gameObject.SetActive(false);
+            
+            if (i.id == id)
+            {
+                i.Reset();
+                i.gameObject.SetActive(false);
+            }
         }
     }
 

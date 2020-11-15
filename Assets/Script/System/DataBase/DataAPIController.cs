@@ -414,7 +414,33 @@ public class DataAPIController : Singleton<DataAPIController>
         dataModel.UpdateData(DataPath.ENERGYSTARTTIME, time);
     }
 
-    
+
+
+
+    #endregion
+
+    #region Daily Quest API
+
+    public QuestData GetQuestData()
+    {
+        return (QuestData)dataModel.Read(DataPath.QUEST);
+    }
+
+    public void SetQuestData(QuestData data)
+    {
+        dataModel.UpdateData(DataPath.QUEST, data);
+    }
+
+    public void UpdateQuestDetail   (int id, QuestDetail detail)
+    {
+        dataModel.UpdateDataDic(DataPath.QUEST_DETAIL, id, detail);
+    }
+
+    public void UpdateQuestTime(int time)
+    {
+        dataModel.UpdateData(DataPath.QUEST_TIME, time);
+    }
+
 
 
     #endregion

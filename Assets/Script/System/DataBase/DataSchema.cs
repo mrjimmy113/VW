@@ -9,7 +9,7 @@ public class PlayerData
     public PlayerInfo info = new PlayerInfo();
     public PlayerStat stat = new PlayerStat();
     public PlayerInventory inventory = new PlayerInventory();
-
+    public QuestData quest = new QuestData();
     public int currentMisison;
     public long goldStartTime;
     public long energyStartTime;
@@ -50,3 +50,31 @@ public class GunInfor
     public int damageLevel;
     public int rofLevel;
 }
+
+[Serializable]
+public class QuestData
+{
+    public int time;
+    public Dictionary<string, QuestDetail> detail = new Dictionary<string, QuestDetail>();
+}
+[Serializable]
+public class QuestDetail
+{
+    public int id;
+    public int require;
+    public int currentProgress;
+    public int reward;
+    public QuestExtraDetail other;
+    public bool isRewarded;
+}
+[Serializable]
+public class QuestExtraDetail { }
+
+[Serializable]
+public class KillSpecificEnemyDetail : QuestExtraDetail
+{
+    public int enemyId;
+}
+
+
+

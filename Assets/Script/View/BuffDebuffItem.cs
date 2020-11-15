@@ -17,4 +17,10 @@ public class BuffDebuffItem : MonoBehaviour
         imgProgress.fillAmount = 1;
         this.fullTime = fullTime;
     }
+
+    public void Reset()
+    {
+        id = 0;
+        fullTime = 0;
+    }
 }

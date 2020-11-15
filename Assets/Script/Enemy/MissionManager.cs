@@ -39,11 +39,13 @@ public class EnemyInfor
     public EnemyInfor[] duplicate;
     public int coinAmount;
     public bool spawnBuffDebuff;
+    public ConfigEnemyRecord cf;
 
     public EnemyInfor() { }
 
     public EnemyInfor(ConfigEnemyRecord config)
     {
+        cf = config;
         hp = config.Hp;
         sizeScale = config.SizeScale;
         prefab = Resources.Load(config.Prefab) as GameObject;
@@ -74,6 +76,7 @@ public class MissionManager : Singleton<MissionManager>
     public int totalMissionEnemyDead;
 
     public event Action<int,int> OnEnemyDeadEvent;
+    public event Action<OnEnemyDeadParam> OnEnemyDeadEventQuest;
     public event Action<int> OnGoldEarnedIncrease;
     public event Action OnMissionClearEvent;
     public event Action OnMissionStart;
@@ -123,17 +126,17 @@ public class MissionManager : Singleton<MissionManager>
             waves[i] = infor;
         }
         waveIndex = -1;
-        
-        playerControl = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControl>();
-        playerControl.OnPlayerDead += LoseGame;
 
+
+        DailyQuestControl.instance.Setup();
     }
 
     public void StartMission()
     {
         int currentEnergy = DataAPIController.instance.GetCurrentEnergy();
-        
-        if(currentEnergy >= 5)
+        playerControl = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControl>();
+        playerControl.OnPlayerDead += LoseGame;
+        if (currentEnergy >= 5)
         {
             OnMissionStart?.Invoke();
             StartCoroutine(StartWave());
@@ -207,6 +210,7 @@ public class MissionManager : Singleton<MissionManager>
             totalMissionEnemyDead++;
             totalEnemyDead++;
             OnEnemyDeadEvent?.Invoke(totalMissionEnemyDead, totalMissionEnemy);
+            OnEnemyDeadEventQuest?.Invoke(param);
         }
     }
 

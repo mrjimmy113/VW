@@ -12,7 +12,7 @@ public class ConfigEnemyRecord
     [SerializeField]
     private float sizeScale = 0;
     [SerializeField]
-    private string prefab = "";
+    private int enemyTypeId;
     [SerializeField]
     private int isDuplicate = 0;
     [SerializeField]
@@ -25,11 +25,12 @@ public class ConfigEnemyRecord
     public int Id { get => id; }
     public int Hp { get => hp; }
     public float SizeScale { get => sizeScale; }
-    public string Prefab { get => prefab; }
+    public string Prefab { get => ConfigurationManager.instance.enemyType.GetRecordByKeySearch(EnemyTypeId).Prefab; }
     public bool IsDuplicate { get => isDuplicate == 1 ? true : false; }
     public List<int> EnemyDuplicateIds { get => MyUltis.StringToIntegerList(enemyDuplicateIds); }
     public int CoinAmount { get => coinAmount;}
     public bool SpawnBuffDebuff { get => spawnBuffDebuff == 1 ? true : false; }
+    public int EnemyTypeId { get => enemyTypeId; }
 }
 
 public class ConfigEnemy: BYDataTable<ConfigEnemyRecord>

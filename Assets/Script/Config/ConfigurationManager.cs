@@ -5,8 +5,10 @@ using UnityEngine;
 
 public class ConfigurationManager : Singleton<ConfigurationManager>
 {
-    
+
     //MISSION
+    public ConfigEnemyType enemyType;
+
     public ConfigEnemy enemy;
     
     public ConfigMission mission;
@@ -36,6 +38,8 @@ public class ConfigurationManager : Singleton<ConfigurationManager>
 
     public ConfigProjectileBuff pBuff;
 
+    public ConfigDailyQuest dailyQuest;
+
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
@@ -50,6 +54,9 @@ public class ConfigurationManager : Singleton<ConfigurationManager>
 
     IEnumerator LoadConfig(Action callback)
     {
+        enemyType = Resources.Load("DataTable/ConfigEnemyType", typeof(ScriptableObject)) as ConfigEnemyType;
+        yield return new WaitUntil(() => enemyType != null);
+
         enemy = Resources.Load("DataTable/ConfigEnemy", typeof(ScriptableObject)) as ConfigEnemy;
         yield return new WaitUntil(() => enemy != null);
 
@@ -89,7 +96,11 @@ public class ConfigurationManager : Singleton<ConfigurationManager>
         pBuff = Resources.Load("DataTable/ConfigProjectileBuff", typeof(ScriptableObject)) as ConfigProjectileBuff;
         yield return new WaitUntil(() => pBuff != null);
 
-        
+
+        dailyQuest = Resources.Load("DataTable/ConfigDailyQuest", typeof(ScriptableObject)) as ConfigDailyQuest;
+        yield return new WaitUntil(() => dailyQuest != null);
+
+
 
         callback?.Invoke();
     }

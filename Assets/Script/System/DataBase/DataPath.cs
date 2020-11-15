@@ -23,6 +23,13 @@ public class DataPath
     public static readonly string DIAMOND = INVENTORY + "/diamond";
     public static readonly string GUNS = INVENTORY + "/guns";
 
+    //DAILY MISSION
+    public static readonly string QUEST = "quest";
+    public static readonly string QUEST_TIME = QUEST + "/time";
+    public static readonly string QUEST_DETAIL = QUEST + "/detail";
+
+    
+
 
 
     public static readonly string GOLDTSTARTTIME = "goldStartTime";
