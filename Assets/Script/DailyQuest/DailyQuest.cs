@@ -18,6 +18,10 @@ public abstract class DailyQuest : MonoBehaviour
         questDetail.require = UnityEngine.Random.Range(record.MinRequire, record.MaxRequire + 1);
         questDetail.isRewarded = false;
         questDetail.currentProgress = 0;
+        ConfigPlayerCoinValueRecord cfCoin = ConfigurationManager.instance.playerCoinValue.GetRecordByKeySearch(
+            DataAPIController.instance.GetCurrentGoldValueLevel()
+            );
+        questDetail.reward *= cfCoin.Value;
         detail = questDetail;
         return CreateNewQuestExtra(questDetail);
 
@@ -40,6 +44,8 @@ public abstract class DailyQuest : MonoBehaviour
     {
         detail.isRewarded = true;
         DataAPIController.instance.UpdateQuestDetail(detail.id, detail);
+        
+        DataAPIController.instance.AddGold(detail.reward);
     }
 
     

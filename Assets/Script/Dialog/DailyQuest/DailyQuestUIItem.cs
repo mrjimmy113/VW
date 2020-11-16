@@ -10,6 +10,7 @@ public class DailyQuestUIItem : MonoBehaviour
     public Text txtQuestProgress;
     public Image imgQuestProgress;
     public Button btnCollect;
+    public RectTransform clearPanel;
 
     private DailyQuest dq;
 
@@ -23,7 +24,7 @@ public class DailyQuestUIItem : MonoBehaviour
         txtQuestProgress.text = dq.detail.currentProgress.NumberNormalize() + " / " + dq.detail.require.NumberNormalize();
         imgQuestProgress.fillAmount = (float)dq.detail.currentProgress / dq.detail.require;
         btnCollect.interactable = dq.detail.currentProgress >= dq.detail.require && !dq.detail.isRewarded;
-        
+        clearPanel.gameObject.SetActive(dq.detail.isRewarded);
         if(isOneTimeSetup)
         {
             btnCollect.onClick.AddListener(() =>
@@ -40,5 +41,6 @@ public class DailyQuestUIItem : MonoBehaviour
     {
         dq.CollectReward();
         btnCollect.interactable = false;
+        clearPanel.gameObject.SetActive(true);
     }
 }

@@ -76,7 +76,6 @@ public class MissionManager : Singleton<MissionManager>
     public int totalMissionEnemyDead;
 
     public event Action<int,int> OnEnemyDeadEvent;
-    public event Action<OnEnemyDeadParam> OnEnemyDeadEventQuest;
     public event Action<int> OnGoldEarnedIncrease;
     public event Action OnMissionClearEvent;
     public event Action OnMissionStart;
@@ -117,17 +116,19 @@ public class MissionManager : Singleton<MissionManager>
             {
                 if(infor.enemyInfor[j].isDuplicate)
                 {
-                    totalMissionEnemy += infor.numbers[j] + infor.enemyInfor[j].duplicate.Length;
+                    totalMissionEnemy += infor.numbers[j] + infor.enemyInfor[j].duplicate.Length * infor.numbers[j];
                 }else
                 {
                     totalMissionEnemy += infor.numbers[j];
                 }
             }
+
+
             waves[i] = infor;
         }
         waveIndex = -1;
 
-
+        EnemyFactory.instance.OnEnemyDeadEvent += OnEnemyDead;
         DailyQuestControl.instance.Setup();
     }
 
@@ -175,7 +176,6 @@ public class MissionManager : Singleton<MissionManager>
 
                     EnemyControl enemy = EnemyFactory.instance.CreateEnemy(infor.prefab);
                     enemy.Setup(infor,false,true);
-                    enemy.OnEnemyDead += OnEnemyDead;
                     enemy.transform.position = enemy.GetTopPos();
                     
                     totalEnemy++;
@@ -184,6 +184,7 @@ public class MissionManager : Singleton<MissionManager>
                         totalEnemy += infor.duplicate.Length;
                         
                     }
+                    
                     yield return new WaitForSeconds(w.timeDelayOnEachSpawn);
                 }
            
@@ -203,14 +204,16 @@ public class MissionManager : Singleton<MissionManager>
 
     private void OnEnemyDead(OnEnemyDeadParam param)
     {
+        
         if(param.isCountDead)
         {
+        
             goldEarned += goldValue * param.coinAmount;
             OnGoldEarnedIncrease?.Invoke(goldEarned);
             totalMissionEnemyDead++;
             totalEnemyDead++;
             OnEnemyDeadEvent?.Invoke(totalMissionEnemyDead, totalMissionEnemy);
-            OnEnemyDeadEventQuest?.Invoke(param);
+            
         }
     }
 

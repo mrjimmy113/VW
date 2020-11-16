@@ -18,10 +18,58 @@ MonoBehaviour:
     clearEnergyReward: 5
     clearGunUnLockId: 0
   - id: 2
-    waves: 3;2;1
+    waves: 4;5;6;7
     clearEnergyReward: 5
     clearGunUnLockId: 0
   - id: 3
+    waves: 8;9;10;11
+    clearEnergyReward: 5
+    clearGunUnLockId: 0
+  - id: 4
+    waves: 12;13;14;15
+    clearEnergyReward: 5
+    clearGunUnLockId: 0
+  - id: 5
+    waves: 16;17;18;19;20
+    clearEnergyReward: 5
+    clearGunUnLockId: 0
+  - id: 6
+    waves: 2;3;1
+    clearEnergyReward: 5
+    clearGunUnLockId: 0
+  - id: 7
+    waves: 1;1;1
+    clearEnergyReward: 5
+    clearGunUnLockId: 0
+  - id: 8
+    waves: 3;2;1
+    clearEnergyReward: 5
+    clearGunUnLockId: 0
+  - id: 9
+    waves: 2;3;1
+    clearEnergyReward: 5
+    clearGunUnLockId: 0
+  - id: 10
+    waves: 1;1;1
+    clearEnergyReward: 5
+    clearGunUnLockId: 0
+  - id: 11
+    waves: 3;2;1
+    clearEnergyReward: 5
+    clearGunUnLockId: 0
+  - id: 12
+    waves: 2;3;1
+    clearEnergyReward: 5
+    clearGunUnLockId: 0
+  - id: 13
+    waves: 1;1;1
+    clearEnergyReward: 5
+    clearGunUnLockId: 0
+  - id: 14
+    waves: 3;2;1
+    clearEnergyReward: 5
+    clearGunUnLockId: 0
+  - id: 15
     waves: 2;3;1
     clearEnergyReward: 5
     clearGunUnLockId: 0

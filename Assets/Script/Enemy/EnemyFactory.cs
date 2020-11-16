@@ -12,6 +12,7 @@ public class OnNewEnemyAddParam
 public class EnemyFactory : Singleton<EnemyFactory>
 {
     public List<EnemyControl> activeEnemy = new List<EnemyControl>();
+    public event Action<OnEnemyDeadParam> OnEnemyDeadEvent;
     public event OnNewEnemyAddEvent OnNewEnemyAddEvent;
 
     public EnemyControl CreateEnemy(GameObject prefab)
@@ -34,7 +35,7 @@ public class EnemyFactory : Singleton<EnemyFactory>
 
     private void OnEnemyDead(OnEnemyDeadParam param)
     {
-        
+        OnEnemyDeadEvent?.Invoke(param);
         activeEnemy.Remove(param.instance);
     }
 }

@@ -97,6 +97,7 @@ public class PlayerControl : MonoBehaviour
        
         MissionManager.instance.OnMissionClearEvent += OnMissionClearEvent;
         MissionManager.instance.OnMissionStart += StartGame;
+        MissionManager.instance.OnGameEnd += OnGameOver;
 
         List<int> activeGuns = new List<int>();
         activeGuns = DataAPIController.instance.GetAllActiveGun();
@@ -198,6 +199,15 @@ public class PlayerControl : MonoBehaviour
         InputManager.instance.OnControlOnDown -= OnControlOnDown;
         InputManager.instance.OnControlUp -= OnControlUp;
         EndAnim();
+    }
+
+    private void OnGameOver(bool gameEnd)
+    {
+        isFire = false;
+        Time.timeScale = 1;
+        InputManager.instance.OnControlDown -= OnControlDown;
+        InputManager.instance.OnControlOnDown -= OnControlOnDown;
+        InputManager.instance.OnControlUp -= OnControlUp;
     }
 
 

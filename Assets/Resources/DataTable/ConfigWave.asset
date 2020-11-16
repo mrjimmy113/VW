@@ -31,64 +31,84 @@ MonoBehaviour:
   - id: 4
     timeDelayOnEachSpawn: 1
     timeDelayToSpawn: 1
-    enemyIds: 9
-    numbers: 1
+    enemyIds: 5
+    numbers: 3
   - id: 5
     timeDelayOnEachSpawn: 1
     timeDelayToSpawn: 1
-    enemyIds: 10;1
-    numbers: 1;5
+    enemyIds: 6;1
+    numbers: 2;5
   - id: 6
     timeDelayOnEachSpawn: 1
     timeDelayToSpawn: 1
-    enemyIds: 11
-    numbers: 3
+    enemyIds: 7;1
+    numbers: 2;5
   - id: 7
     timeDelayOnEachSpawn: 1
     timeDelayToSpawn: 1
-    enemyIds: 12;1
-    numbers: 1;10
+    enemyIds: 8
+    numbers: 3
   - id: 8
     timeDelayOnEachSpawn: 1
     timeDelayToSpawn: 1
-    enemyIds: 13
+    enemyIds: 9
     numbers: 3
   - id: 9
     timeDelayOnEachSpawn: 1
     timeDelayToSpawn: 1
-    enemyIds: 14
-    numbers: 3
+    enemyIds: 10;1
+    numbers: 1;5
   - id: 10
     timeDelayOnEachSpawn: 1
     timeDelayToSpawn: 1
-    enemyIds: 15
-    numbers: 1
+    enemyIds: 11
+    numbers: 3
   - id: 11
     timeDelayOnEachSpawn: 1
     timeDelayToSpawn: 1
-    enemyIds: 16;4
-    numbers: 1;2
+    enemyIds: 12;1
+    numbers: 1;10
   - id: 12
     timeDelayOnEachSpawn: 1
     timeDelayToSpawn: 1
-    enemyIds: 17
+    enemyIds: 13
     numbers: 3
   - id: 13
     timeDelayOnEachSpawn: 1
     timeDelayToSpawn: 1
-    enemyIds: 18
+    enemyIds: 14
     numbers: 3
   - id: 14
     timeDelayOnEachSpawn: 1
     timeDelayToSpawn: 1
-    enemyIds: 19
+    enemyIds: 15
     numbers: 3
   - id: 15
     timeDelayOnEachSpawn: 1
     timeDelayToSpawn: 1
+    enemyIds: 16;4
+    numbers: 1;2
+  - id: 16
+    timeDelayOnEachSpawn: 1
+    timeDelayToSpawn: 1
+    enemyIds: 17
+    numbers: 3
+  - id: 17
+    timeDelayOnEachSpawn: 1
+    timeDelayToSpawn: 1
+    enemyIds: 18
+    numbers: 3
+  - id: 18
+    timeDelayOnEachSpawn: 1
+    timeDelayToSpawn: 1
+    enemyIds: 19
+    numbers: 3
+  - id: 19
+    timeDelayOnEachSpawn: 1
+    timeDelayToSpawn: 1
     enemyIds: 20
     numbers: 3
-  - id: 16
+  - id: 20
     timeDelayOnEachSpawn: 1
     timeDelayToSpawn: 1
     enemyIds: 21

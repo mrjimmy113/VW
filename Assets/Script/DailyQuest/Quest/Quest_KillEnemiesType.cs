@@ -19,12 +19,12 @@ public class Quest_KillEnemiesType : DailyQuest
 
     public override void SetupProgress()
     {
-        MissionManager.instance.OnEnemyDeadEventQuest += UpdateProgress;
+        //MissionManager.instance.OnEnemyDeadEventQuest += UpdateProgress;
     }
 
     protected  void UpdateProgress(object data)
     {
-        OnEnemyDeadParam param = (OnEnemyDeadParam)data;
+        /*OnEnemyDeadParam param = (OnEnemyDeadParam)data;
         KillSpecificEnemyDetail d = (KillSpecificEnemyDetail)detail.other;
         if(d.enemyId == param.enemyType && !detail.isRewarded)
         {
@@ -34,6 +34,6 @@ public class Quest_KillEnemiesType : DailyQuest
                 detail.isRewarded = true;
             }
             DataAPIController.instance.UpdateQuestDetail(detail.id,detail);
-        }
+        }*/
     }
 }

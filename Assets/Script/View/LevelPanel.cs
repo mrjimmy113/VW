@@ -12,6 +12,8 @@ public class LevelPanel : MonoBehaviour
     public void Setup(int currentLevel)
     {
         int level = currentLevel - 1;
+        imgPre.gameObject.SetActive(true);
+        imgNext.gameObject.SetActive(true);
         foreach (var i in levelItems)
         {
             ConfigMissionRecord mis =

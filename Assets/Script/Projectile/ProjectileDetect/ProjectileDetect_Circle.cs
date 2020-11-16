@@ -9,12 +9,12 @@ public class ProjectileDetect_Circle : ProjectileDetect
 
     public override Collider2D[] DetectEnemy(Vector3 pos)
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(pos, radius,enemyLayerMask);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(pos, radius * transform.localScale.x,enemyLayerMask);
         return colliders;
     }
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(transform.position, radius);
+        Gizmos.DrawWireSphere(transform.position, radius * transform.localScale.x);
     }
 }

@@ -40,6 +40,17 @@ public class Boudary : Singleton<Boudary>
         return result;
     }
 
+    public bool IsInScreenX(Vector2 postion)
+    {
+        Vector2 pos = Camera.main.WorldToScreenPoint(postion);
+        bool result = true;
+
+        if (pos.x < 0 || pos.x > maxWidth * 1.5f) result = false;
+        if (pos.y < 0 || pos.y > maxHeight * 1.5f) result = false;
+
+        return result;
+    }
+
     public Vector2 ClampBoudary(Vector2 position)
     {
         Vector2 screenPos = Camera.main.WorldToScreenPoint(position);

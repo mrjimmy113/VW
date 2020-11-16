@@ -6,18 +6,18 @@ public class Quest_KillEnemies : DailyQuest
 {
     public override void SetupProgress()
     {
-        MissionManager.instance.OnEnemyDeadEventQuest += UpdateProgress;
+        EnemyFactory.instance.OnEnemyDeadEvent += UpdateProgress;
     }
 
-    protected  void UpdateProgress(object data)
+    protected  void UpdateProgress(OnEnemyDeadParam data)
     {
-        if(!detail.isRewarded)
+        if(!detail.isRewarded && data.isCountDead)
         {
             detail.currentProgress++;
             if(detail.currentProgress >= detail.require)
             {
                 detail.currentProgress = detail.require;
-                MissionManager.instance.OnEnemyDeadEventQuest -= UpdateProgress;
+                EnemyFactory.instance.OnEnemyDeadEvent -= UpdateProgress;
             }
             DataAPIController.instance.UpdateQuestDetail(detail.id, detail);
         }
