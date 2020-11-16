@@ -149,10 +149,6 @@ public class EnemyControl : MonoBehaviour
     private void Update()
     {
         if(!isDead && !isChild) trans.position += direction * Time.deltaTime * currentSpeed;
-        if(!Boudary.instance.IsInScreenX(trans.position))
-        {
-            trans.position = GetTopPos();
-        }
     }
 
     private void FixedUpdate()

@@ -52,9 +52,9 @@ public class HomeView : BaseView
 
         txtDiamond.text = DataAPIController.instance.GetCurrentDiamond().ToString();
         int currentLevel = MissionManager.instance.currentMission;
- 
-       
 
+
+        playerControl = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControl>();
 
 
 
@@ -67,7 +67,7 @@ public class HomeView : BaseView
         {
             isSetupOneTime = false;
             GetComponentInChildren<GoldEarnedPanel>().Setup();
-            playerControl = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControl>();
+            
             DataAPIController.instance.RegisterEvent(DataPath.GOLD, OnGoldChange);
             DataAPIController.instance.RegisterEvent(DataPath.ENERGY, OnEnergyChange);
             ResourcesGainHandler.instance.EnergyEarnedHandler += EnergyProgress;
