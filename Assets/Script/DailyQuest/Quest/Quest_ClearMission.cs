@@ -16,6 +16,7 @@ public class Quest_ClearMission : DailyQuest
             detail.currentProgress++;
             if (detail.currentProgress >= detail.require)
             {
+                detail.currentProgress = detail.require;
                 MissionManager.instance.OnMissionClearEvent -= UpdateProgress;
             }
             DataAPIController.instance.UpdateQuestDetail(detail.id, detail);

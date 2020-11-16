@@ -127,6 +127,14 @@ public static class MyUltis
         return result;
     }
 
+    public static string EnumToString(this Enum e)
+    {
+        
+        string result = Enum.GetName(e.GetType(),  e);
+
+        return result;
+    }
+
 }
 
 public class MyUltisGeneric<T>

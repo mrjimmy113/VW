@@ -29,6 +29,7 @@ public class Quest_EarnGold : DailyQuest
             detail.currentProgress += data;
             if (detail.currentProgress >= detail.require)
             {
+                detail.currentProgress = detail.require;
                 MissionManager.instance.OnGoldEarnedIncrease -= UpdateProgress;
             }
             DataAPIController.instance.UpdateQuestDetail(detail.id, detail);

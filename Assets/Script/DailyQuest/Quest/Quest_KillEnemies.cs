@@ -16,6 +16,7 @@ public class Quest_KillEnemies : DailyQuest
             detail.currentProgress++;
             if(detail.currentProgress >= detail.require)
             {
+                detail.currentProgress = detail.require;
                 MissionManager.instance.OnEnemyDeadEventQuest -= UpdateProgress;
             }
             DataAPIController.instance.UpdateQuestDetail(detail.id, detail);

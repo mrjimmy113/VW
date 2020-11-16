@@ -6,7 +6,7 @@ using System;
 public class DailyQuestControl : Singleton<DailyQuestControl>
 {
 
-    List<DailyQuest> quests = new List<DailyQuest>();
+    public List<DailyQuest> quests = new List<DailyQuest>();
 
     public void InitQuest()
     {
